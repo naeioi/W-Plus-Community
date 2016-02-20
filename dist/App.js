@@ -1,0 +1,1 @@
+webpackJsonp([1],[function(e,t,n){"use strict";function l(e){return e&&e.__esModule?e:{"default":e}}var u=n(87),r=l(u),d=n(58),a=l(d),c=function(){return r["default"].createElement("h1",null,"Hello, World!")};a["default"].render(r["default"].createElement(c,null),document.getElementById("App"))}]);
