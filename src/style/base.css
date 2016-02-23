@@ -1,3 +1,6 @@
+@import './animation.css';
+@import './fontello.css';
+
 body {
   padding: 0;
   margin: 0;
@@ -18,7 +21,7 @@ body {
     top: 2pt;
     width: 0.4em;
     height: 0.4em;
-    border-right: 0.2em solid black;
-    border-top: 0.2em solid black;
+    border-right: 0.1em solid black;
+    border-top: 0.1em solid black;
     transform: rotate(-135deg);
 }

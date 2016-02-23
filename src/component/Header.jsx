@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { mergeCSS } from '../utility/style'
-import { fgColor1, fgColor2, bgColor1, bgColor2 } from '../baseCSS'
+import { fgColor1, fgColor2, bgColor1, bgColor2 } from '../style/baseCSS'
 
 const Button = ({ onClick, style: _style, children }) => {
   let style = _style;
@@ -19,7 +19,8 @@ const Header = ({ style: _style, supplyment, children, backable = false }) => {
   let style = mergeCSS(_style, {
     height: 44,
     width: '100%',
-    backgroundColor: fgColor1
+    backgroundColor: fgColor1,
+    borderBottom: '1px solid #d8d8d8'
   }), childrenStyle = {
     textAlign: 'center',
     color: fgColor2,
@@ -29,7 +30,7 @@ const Header = ({ style: _style, supplyment, children, backable = false }) => {
     margin: '0 auto'
   }, backStyle = {
     position: 'absolute',
-    fontSize: 18,
+    fontSize: 25,
     width: 44,
     height: 44,
     borderColor: 'white',

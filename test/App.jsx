@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Header from '../src/component/Header.jsx'
-import { fgColor2 } from '../src/baseCSS'
+import { fgColor2 } from '../src/style/baseCSS'
+import '../src/style/base.css'
 
 const App = () => (
   <div>
@@ -16,7 +17,7 @@ const App = () => (
           }}>
         </div>
       }>
-      中文
+      中文233
     </Header>
   </div>
 )
