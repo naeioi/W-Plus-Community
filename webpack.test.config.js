@@ -2,19 +2,19 @@ var webpack = require('webpack');
 
 module.exports = {
   entry: {
-      app: './src/App.jsx',
-      startup: './src/Startup.jsx',
+      app: './test/App.jsx',
       vendor: ['react', 'react-dom']
   },
   output: {
-    path: './dev',
+    path: './test',
     filename: '[name].js'
   },
   devServer: {
     inline: true,
-    port: 8080,
+    port: 8800,
     host: '0.0.0.0',
-    devtool: "eval"
+    devtool: "eval",
+    contentBase: 'test'
   },
   module: {
     loaders: [

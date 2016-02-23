@@ -3,11 +3,12 @@ var webpack = require("webpack");
 module.exports = {
   entry: {
     app: './src/App.jsx',
+    startup: './src/Startup.jsx',
     vendor: ['react', 'react-dom']
   },
   output: {
     path: './dist',
-    filename: 'App.js'
+    filename: '[name].js'
   },
   module: {
     loaders: [
