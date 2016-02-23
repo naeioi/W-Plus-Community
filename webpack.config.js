@@ -14,8 +14,8 @@ module.exports = {
     inline: true,
     port: 8080,
     host: '0.0.0.0',
-    devtool: "eval"
   },
+  devtool: "#cheap-module-eval-source-map",
   module: {
     loaders: [
       {

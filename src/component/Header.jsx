@@ -1,44 +1,69 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import { mergeCSS } from '../utility/style'
-import * from '../baseCSS'
+import { fgColor1, fgColor2, bgColor1, bgColor2 } from '../baseCSS'
+
+const Button = ({ onClick, style: _style, children }) => {
+  let style = _style;
+  return (
+    <div style={style} onClick={onClick}>
+      {children}
+    </div>
+  )
+}
 
 /* Layout
 ** |--Back------Title------Supplyment--|
 */
-const Header = ({ _style, supplyment, children, backable = false }) => {
+const Header = ({ style: _style, supplyment, children, backable = false }) => {
   let style = mergeCSS(_style, {
-    height: 88,
+    height: 44,
     width: '100%',
     backgroundColor: fgColor1
   }), childrenStyle = {
     textAlign: 'center',
     color: fgColor2,
     fontWeight: 'bold',
+    display: 'block',
+    paddingTop: 10,
     margin: '0 auto'
   }, backStyle = {
-    postion: 'absolution',
-    left: 10,
-    top: 10,
+    position: 'absolute',
+    fontSize: 18,
+    width: 44,
+    height: 44,
+    borderColor: 'white',
+    fontWeight: 200,
     display: backable ? 'block' : 'none'
   }, supplymentStyle = {
-    position: 'absolution',
-    right: 10,
-    top: 10,
-    display: supplyment ? 'block' : 'none'
-  };
+     position: 'absolute',
+     right: 18,
+     top: 11,
+    display: supplyment ? 'table-cell' : 'none',
+    verticalAlign: 'middle'
+  }, arrowStyle = {
+    borderColor:fgColor2,
+    top: 18,
+    left: 18
+  }
   return (
     <div style={style}>
       <Button
         style={backStyle}
-        onClick={() => {window.history.back()}}>
-        Back
+        onClick={() => {window.history.back();}}>
+        <div className='backArrow'
+          style={arrowStyle}>
+        </div>
       </Button>
-      <span style={childrenStyle}>
+      <div style={childrenStyle}>
         {children}
-      </span>
+      </div>
       <div style={supplymentStyle}>
         {supplyment}
       </div>
-    </div>
-  )
+    </div>)
 }
+/*
+  */
+
+export default Header
