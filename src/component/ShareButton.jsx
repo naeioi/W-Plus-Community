@@ -1,25 +1,74 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import { mergeCSS } from '../utility/style'
 import { fgColor2 } from '../style/baseCSS'
 import Button from './Button.jsx'
+import PopUpShare from './PopUpShare.jsx'
 
-const ShareButton = ({style: _style}) => {
-  let styleWrap = mergeCSS(_style, {
-    //WebkitTapHighlightColor: 'rgba(200,0,0,0.4)',
-    textAlign: 'center',
-    color: fgColor2
-  }), style = {
-    padding: 13
+class ShareButton extends React.Component {
+  constructor(props) {
+    super();
+    this.styleWrap = mergeCSS(props.style, {
+      textAlign: 'center',
+      color: fgColor2
+    });
+    this.style = {
+      padding: 13
+    };
   }
-  return (
-    <Button
-      style={styleWrap}>
-      <div
-        style={style}
-        className='icon-share'>
+
+  cancelShare() {
+    ReactDOM.unmountComponentAtNode(this.refs['popUpDiv']);
+  }
+
+  onTouchTap() {
+    const maskStyle = {
+      width: '100%',
+      height: window.outerHeight + 10,
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      backgroundColor: 'rgba(0,0,0,0)',
+      transition: 'all 2s 2s ease',
+      WebkitTransition: 'all 400ms ease-in-out',
+      zIndex: 2
+    }, popUpShareStyle = {
+      position: 'fixed',
+      bottom: 0,
+      zIndex: 3
+    };
+    ReactDOM.render((
+      <div>
+        <div
+          style={maskStyle}
+          ref={(e)=>{
+            if(e)
+              setTimeout(()=>e.style.backgroundColor='rgba(0,0,0,0.3)',0);
+          }}
+          onTouchTap={this.cancelShare.bind(this)}
+          id='screen-mask'></div>
+        <PopUpShare
+          {...this.props}
+          style={popUpShareStyle} />
       </div>
-    </Button>
-  );
+    ), this.refs['popUpDiv']);
+  }
+
+  render() {
+    return (
+      <div>
+        <div ref='popUpDiv'></div>
+        <Button
+          onTouchTap={this.onTouchTap.bind(this)}
+          style={this.styleWrap}>
+          <div
+            style={this.style}
+            className='icon-share'>
+          </div>
+        </Button>
+      </div>
+    );
+  }
 }
 
 export default ShareButton
