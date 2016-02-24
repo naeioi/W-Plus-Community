@@ -2,21 +2,16 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Header from '../src/component/Header.jsx'
 import { fgColor2 } from '../src/style/baseCSS'
+import ShareButton from '../src/component/ShareButton.jsx'
 import '../src/style/base.css'
+import injectTapEventPlugin from 'react-tap-event-plugin'
+injectTapEventPlugin();
 
 const App = () => (
   <div>
     <Header
       backable={true}
-      supplyment={
-        <div
-          style={{
-            width:25,
-            height:25,
-            backgroundColor: fgColor2
-          }}>
-        </div>
-      }>
+      shareData={{name:'zhu'}}>
       中文233
     </Header>
   </div>

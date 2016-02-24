@@ -1,21 +1,14 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { mergeCSS } from '../utility/style'
-import { fgColor1, fgColor2, bgColor1, bgColor2 } from '../style/baseCSS'
-
-const Button = ({ onClick, style: _style, children }) => {
-  let style = _style;
-  return (
-    <div style={style} onClick={onClick}>
-      {children}
-    </div>
-  )
-}
+import { fgColor1, fgColor2, bgColor1, bgColor2, darkenBG, clearBG } from '../style/baseCSS'
+import ShareButton from './ShareButton.jsx'
+import Button from './Button.jsx'
 
 /* Layout
-** |--Back------Title------Supplyment--|
+** |--Back------Title------Share--|
 */
-const Header = ({ style: _style, supplyment, children, backable = false }) => {
+const Header = ({ style: _style, shareData, children, backable = false }) => {
   let style = mergeCSS(_style, {
     height: 44,
     width: '100%',
@@ -30,38 +23,40 @@ const Header = ({ style: _style, supplyment, children, backable = false }) => {
     margin: '0 auto'
   }, backStyle = {
     position: 'absolute',
-    fontSize: 25,
+    fontSize: 20,
     width: 44,
     height: 44,
-    borderColor: 'white',
-    fontWeight: 200,
+    textAlign: 'center',
+    //fontWeight: 200,
     display: backable ? 'block' : 'none'
-  }, supplymentStyle = {
+  }, shareStyle = {
      position: 'absolute',
-     right: 18,
-     top: 11,
-    display: supplyment ? 'table-cell' : 'none',
+     right: 0,
+     top: 0,
+     width: 44,
+     height: 44,
+     display: shareData ? 'block' : 'none',
     verticalAlign: 'middle'
   }, arrowStyle = {
-    borderColor:fgColor2,
-    top: 18,
-    left: 18
+    color:fgColor2,
+    padding: '12 18 12 6'
+    //fontWeight: 100
   }
   return (
     <div style={style}>
       <Button
         style={backStyle}
-        onClick={() => {window.history.back();}}>
-        <div className='backArrow'
+        onTouchTap={() => {window.history.back();}}>
+        <div className='icon-left-open-big'
           style={arrowStyle}>
         </div>
       </Button>
       <div style={childrenStyle}>
         {children}
       </div>
-      <div style={supplymentStyle}>
-        {supplyment}
-      </div>
+      <ShareButton
+        style={shareStyle}
+        {...shareData} />
     </div>)
 }
 /*
