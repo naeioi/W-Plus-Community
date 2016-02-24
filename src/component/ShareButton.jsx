@@ -29,8 +29,8 @@ class ShareButton extends React.Component {
       top: 0,
       left: 0,
       backgroundColor: 'rgba(0,0,0,0)',
-      transition: 'all 2s 2s ease',
-      WebkitTransition: 'all 400ms ease-in-out',
+      transition: 'all 300ms ease-in-out',
+      WebkitTransition: 'all 300ms ease-in-out',
       zIndex: 2
     }, popUpShareStyle = {
       position: 'fixed',

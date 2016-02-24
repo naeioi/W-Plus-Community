@@ -1,8 +1,11 @@
 import React from 'react'
 import { darkenBG, clearBG } from '../style/baseCSS'
+import { mergeCSS } from '../utility/style.js'
 
 const Button = ({ onTouchTap, style: _style, children }) => {
-  let style = _style;
+  let style = mergeCSS(_style, {
+    textAlign: 'center'
+  });
   //onTouchTap={onTouchTap}
   return (
     <a

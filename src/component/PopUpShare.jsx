@@ -1,38 +1,43 @@
 import React from 'react'
+import Button from './Button.jsx'
 import { mergeCSS, setAlpha } from '../utility/style.js'
 import { fgColor1, fgColor2 } from '../style/baseCSS.js'
 
 const PopUpShare = ({ style: _style }) => {
   let style = mergeCSS(_style, {
     boxSizing: 'border-box',
-    height: 150,
+    minHeight: 150,
     width: '100%',
     backgroundColor: 'white',
+    padding: '10 20',
     borderTop: '1px solid rgba(0,0,0,0.3)'
-  }), TJCloudWrapStyle = {
-    position: 'absolute',
-    boxSizing: 'border-box',
-    left: 0,
-    height: 150,
-    width: '30%',
-    backgroundColor: fgColor2
-  }, OtherMediaWrapStyle = {
-    position: 'absolute',
-    boxSizing: 'border-box',
-    height: 150,
-    width: '70%',
-    right: 0,
-    backgroundColor: fgColor2
-  }
+  }), buttonStyle = {
+    display: 'block',
+    color: fgColor2,
+    boxSizeing: 'border-box',
+    height: 65,
+    width: '25%',
+    float: 'left'
+  };
+  const row1 = ['icon-wechat_moments', 'icon-wechat', 'icon-qq', 'icon-qzone-logo'],
+        row2 = ['icon-sina-weibo', 'icon-link', 'icon-ellipsis'];
   return (
     <div
       style={style}>
-      <div
-        style={TJCloudWrapStyle}
-        id='TJCloudWrap'></div>
-      <div
-        style={OtherMediaWrapStyle}
-        id='OtherMediaWrap'></div>
+      {/* Row 1*/}
+      {row1.map((className, ind) => (
+        <Button style={buttonStyle} key={ind}>
+          <div className={className}></div>
+        </Button>
+      ))}
+      {/* Clear float */}
+      <div className='clearFloat'></div>
+      {/* Row 2 */}
+      {row2.map((className, ind) => (
+        <Button style={buttonStyle} key={ind}>
+          <div className={className}></div>
+        </Button>
+      ))}
     </div>
   );
 }

@@ -26,7 +26,6 @@ const Header = ({ style: _style, shareData, children, backable = false }) => {
     fontSize: 20,
     width: 44,
     height: 44,
-    textAlign: 'center',
     //fontWeight: 200,
     display: backable ? 'block' : 'none'
   }, shareStyle = {
