@@ -13,7 +13,8 @@ const Header = ({ style: _style, shareData, children, backable = false }) => {
     height: 44,
     width: '100%',
     backgroundColor: fgColor1,
-    borderBottom: '1px solid #d8d8d8'
+    borderBottom: '1px solid #d8d8d8',
+    WebkitUserSelect: 'none'
   }), childrenStyle = {
     textAlign: 'center',
     color: fgColor2,

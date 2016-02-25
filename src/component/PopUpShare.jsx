@@ -9,33 +9,84 @@ const PopUpShare = ({ style: _style }) => {
     minHeight: 150,
     width: '100%',
     backgroundColor: 'white',
-    padding: '10 20',
+    padding: '10 20 10 20',
     borderTop: '1px solid rgba(0,0,0,0.3)'
   }), buttonStyle = {
-    display: 'block',
     color: fgColor2,
     boxSizeing: 'border-box',
     height: 65,
+    paddingTop: 10,
     width: '25%',
     float: 'left'
-  };
-  const row1 = ['icon-wechat_moments', 'icon-wechat', 'icon-qq', 'icon-qzone-logo'],
-        row2 = ['icon-sina-weibo', 'icon-link', 'icon-ellipsis'];
+  }, iconStyle = {
+    float: 'left',
+	  width: '100%',
+	  paddingTop: '50%',
+    paddingBottom: '50%',
+	  lineHeight: '1em',
+	  marginTop: '-0.5em',
+    fontSize: '1em',
+  }, legendStyle = {
+    color: 'rgba(0,0,0,0.9)',
+    boxSizing: 'border-box',
+    marginTop: 5,
+    fontSize: '5px'
+  }, circleStyle = {
+    width: '100%',
+	  height: '0',
+	  paddingBottom: '100%',
+    borderRadius: '50%',
+    overflow:'hidden',
+    background: fgColor1,
+    boxShadow: '0 0 1px gray'
+  }, iconWrapStyle = {
+    textAlign: 'center',
+    width: 35,
+    margin: '0 auto'
+  }
+  const row1 = [{
+    className: 'icon-wechat_moments',
+    text: '微信朋友圈'}, {
+    className: 'icon-wechat',
+    text: '微信朋友'}, {
+    className: 'icon-qq',
+    text: 'QQ好友'}, {
+    className: 'icon-qzone-logo',
+    text: 'QQ空间'
+  }], row2 = [{
+    className: 'icon-sina-weibo',
+    text: '新浪微博'}, {
+    className: 'icon-link',
+    text: '复制链接'}, {
+    className: 'icon-ellipsis',
+    text: '更多'
+  }];
+
   return (
     <div
       style={style}>
       {/* Row 1*/}
-      {row1.map((className, ind) => (
+      {row1.map((medium, ind) => (
         <Button style={buttonStyle} key={ind}>
-          <div className={className}></div>
+          <div style={iconWrapStyle}>
+            <div style={circleStyle}>
+              <div style={iconStyle} className={medium.className}></div>
+            </div>
+          </div>
+          <div style={legendStyle}>{medium.text}</div>
         </Button>
       ))}
       {/* Clear float */}
       <div className='clearFloat'></div>
       {/* Row 2 */}
-      {row2.map((className, ind) => (
+      {row2.map((medium, ind) => (
         <Button style={buttonStyle} key={ind}>
-          <div className={className}></div>
+          <div style={iconWrapStyle}>
+            <div style={circleStyle}>
+              <div style={iconStyle} className={medium.className}></div>
+            </div>
+          </div>
+          <div style={legendStyle}>{medium.text}</div>
         </Button>
       ))}
     </div>

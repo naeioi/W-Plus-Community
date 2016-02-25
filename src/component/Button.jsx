@@ -4,7 +4,8 @@ import { mergeCSS } from '../utility/style.js'
 
 const Button = ({ onTouchTap, style: _style, children }) => {
   let style = mergeCSS(_style, {
-    textAlign: 'center'
+    textAlign: 'center',
+    WebkitUserSelect: 'none'
   });
   //onTouchTap={onTouchTap}
   return (

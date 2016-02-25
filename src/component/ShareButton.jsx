@@ -23,14 +23,14 @@ class ShareButton extends React.Component {
 
   onTouchTap() {
     const maskStyle = {
-      width: '100%',
-      height: window.outerHeight + 10,
+      width: '100vw',
+      height: '100vh',
       position: 'fixed',
       top: 0,
       left: 0,
       backgroundColor: 'rgba(0,0,0,0)',
-      transition: 'all 300ms ease-in-out',
-      WebkitTransition: 'all 300ms ease-in-out',
+      transition: 'background-color 300ms ease-in-out',
+      WebkitTransition: 'background-color 300ms ease-in-out',
       zIndex: 2
     }, popUpShareStyle = {
       position: 'fixed',
@@ -41,10 +41,7 @@ class ShareButton extends React.Component {
       <div>
         <div
           style={maskStyle}
-          ref={(e)=>{
-            if(e)
-              setTimeout(()=>e.style.backgroundColor='rgba(0,0,0,0.3)',0);
-          }}
+          ref={(e) => e ? setTimeout(()=>e.style.backgroundColor='rgba(0,0,0,0.3)',0) : void(0) }
           onTouchTap={this.cancelShare.bind(this)}
           id='screen-mask'></div>
         <PopUpShare

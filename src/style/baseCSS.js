@@ -4,13 +4,13 @@ var bgColor1 = 'rgb(242, 242, 240)';
 var bgColor2 = 'rgb(172, 173, 170)';
 
 const darkenBG = (e) => {
-  e.target.style.backgroundColor='rgba(0,0,0,0.1)';
+  e.currentTarget.style.backgroundColor='rgba(0,0,0,0.1)';
 }
 
 const msDelay = 50;
 
 const clearBG = (e) => {
-  let target = e.target;
+  let target = e.currentTarget;
   setTimeout(()=>target.style.backgroundColor='rgba(0,0,0,0)', msDelay);
 }
 
