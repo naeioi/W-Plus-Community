@@ -8,6 +8,10 @@ function mergeCSS(...objs) {
   return Object.assign({}, ...objs);
 }
 
+function copyStyle(style) {
+  return Object.assign({}, style);
+}
+
 function setAlpha(color, alpha) {
   if(typeof color != 'string') {
     throw 'In setAlpha(color, alpha): A color must be a String.';
@@ -23,4 +27,4 @@ function setAlpha(color, alpha) {
   }
 }
 
-export { mergeCSS, setAlpha }
+export { mergeCSS, setAlpha, copyStyle }

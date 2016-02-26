@@ -1,7 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { fgColor1, fgColor2 } from '../style/baseCSS'
-import { mergeCSS } from '../utility/style'
+import { mergeCSS, copyStyle } from '../utility/style'
 import Button from './Button.jsx'
 //import extractHash from '../utility/extractHash'
 
@@ -10,15 +10,15 @@ class NavBar extends React.Component {
     super();
     /* location.hash = '#/first/second -> first */
     this.state = {
-      hash: location.hash.split('/')
+      hash: location.hash.split('/')[1]
     }
     this.sections = [{
-      path: 'discover',
-      iconClassName: '',
+      path: 'discovery',
+      iconClassName: 'icon-search',
       text: '发现'
     }, {
       path: 'history',
-      iconClassName: '',
+      iconClassName: 'icon-history',
       text: '历史'
     }, {
       path: 'CENTER',
@@ -26,11 +26,11 @@ class NavBar extends React.Component {
       text: '',
     }, {
       path: 'space',
-      iconClassName: '',
+      iconClassName: 'icon-location',
       text: '场地'
     }, {
       path: 'my',
-      iconClassName: '',
+      iconClassName: 'icon-user',
       text: '我的'
     }];
   }
@@ -40,26 +40,34 @@ class NavBar extends React.Component {
       bottom: 0,
       width: '100%',
       height: 49,
-      backgroundColor: fgColor1,
-      color: fgColor2
+      backgroundColor: fgColor1
     }, _centerWidth = 20, centerWidth = _centerWidth + '%',
-       buttonWidth = (100-_centerWidth) / 4 + '%',
-       buttonStyle = {
-         fontSize: '0.7em',
-         fontWeight: 'bold',
-         color: fgColor2,
-         display: 'block',
-         float: 'left',
-         width: buttonWidth,
-         height: style.height
-       };
+    buttonWidth = (100-_centerWidth) / 4 + '%',
+    buttonStyle = {
+       fontSize: '0.7em',
+       fontWeight: 'bold',
+       color: 'rgba(255,255,255,0.8)',
+       display: 'block',
+       float: 'left',
+       width: buttonWidth,
+       height: style.height
+     }, iconStyle = {
+       fontSize: '2em'
+     };
     return (
       <div style={style}>
         {this.sections.map((section, ind) => (
           <Button
             key={ind}
-            style={section.path === 'CENTER' ?
-              mergeCSS(buttonStyle, { width: centerWidth }) : buttonStyle}>
+            style={((style)=>{
+              if(section.path === 'CENTER') style.width = centerWidth;
+              console.log(section.path, this.state.hash, style);
+              if(section.path === this.state.hash) style.color = fgColor2;
+              return style;
+            })(copyStyle(buttonStyle))}>
+            <div
+              style={iconStyle}
+              className={section.iconClassName}></div>
             {section.text}
           </Button>
         ))}

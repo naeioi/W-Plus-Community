@@ -69,3 +69,7 @@
 .icon-qq:before { content: '\e80a'; } /* '' */
 .icon-ellipsis:before { content: '\e80b'; } /* '' */
 .icon-wechat_moments:before { content: '\e80c'; } /* '' */
+.icon-search:before { content: '\e80d'; } /* '' */
+.icon-location:before { content: '\e80e'; } /* '' */
+.icon-user:before { content: '\e80f'; } /* '' */
+.icon-history:before { content: '\e810'; } /* '' */
