@@ -4,6 +4,7 @@ import Header from '../src/component/Header.jsx'
 import { fgColor2 } from '../src/style/baseCSS'
 import ShareButton from '../src/component/ShareButton.jsx'
 import '../src/style/base.css'
+import NavBar from '../src/component/NavBar.jsx'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin();
 
@@ -14,6 +15,7 @@ const App = () => (
       shareData={{name:'zhu'}}>
       中文233
     </Header>
+    <NavBar />
   </div>
 )
 

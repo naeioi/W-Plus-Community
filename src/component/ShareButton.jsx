@@ -4,6 +4,7 @@ import { mergeCSS } from '../utility/style'
 import { fgColor2 } from '../style/baseCSS'
 import Button from './Button.jsx'
 import PopUpShare from './PopUpShare.jsx'
+import ScreenMask from './ScreenMask.jsx'
 
 class ShareButton extends React.Component {
   constructor(props) {
@@ -39,11 +40,7 @@ class ShareButton extends React.Component {
     };
     ReactDOM.render((
       <div>
-        <div
-          style={maskStyle}
-          ref={(e) => e ? setTimeout(()=>e.style.backgroundColor='rgba(0,0,0,0.3)',0) : void(0) }
-          onTouchTap={this.cancelShare.bind(this)}
-          id='screen-mask'></div>
+        <ScreenMask onTouchTap={this.cancelShare.bind(this)} />
         <PopUpShare
           {...this.props}
           style={popUpShareStyle} />
