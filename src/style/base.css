@@ -20,6 +20,10 @@ a {
   text-decoration: none;
 }
 
+.circle:before {
+    content: ' \25CF';
+}
+
 .clearFloat {
   clear: both;
 }

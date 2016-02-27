@@ -46,7 +46,7 @@ const PopUpShare = ({ style: _style }) => {
   }
   const row1 = [{
     className: 'icon-wechat_moments',
-    text: '微信朋友圈'}, {
+    text: '朋友圈'}, {
     className: 'icon-wechat',
     text: '微信朋友'}, {
     className: 'icon-qq',
