@@ -36,7 +36,7 @@ class ShareButton extends React.Component {
     }, popUpShareStyle = {
       position: 'fixed',
       bottom: 0,
-      zIndex: 3
+      zIndex: 4
     };
     ReactDOM.render((
       <div>

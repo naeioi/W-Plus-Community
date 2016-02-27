@@ -1,7 +1,7 @@
-var fgColor1 = 'rgb(235, 165, 39)';
-var fgColor2 = 'rgb(137, 83, 35)';
-var bgColor1 = 'rgb(242, 242, 240)';
-var bgColor2 = 'rgb(172, 173, 170)';
+var fgColor1 = 'rgb(236, 159, 60)';
+var fgColor2 = 'rgb(132, 85, 46)';
+var bgColor1 = 'rgb(237, 237, 246)';
+var bgColor2 = 'rgb(164, 167, 167)';
 
 const darkenBG = (e) => {
   e.currentTarget.style.backgroundColor='rgba(0,0,0,0.1)';

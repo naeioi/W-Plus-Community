@@ -12,15 +12,14 @@ const ScreenMask = ({style: _style, onTouchTap}) => {
       backgroundColor: 'rgba(0,0,0,0)',
       transition: 'background-color 200ms ease-in-out',
       WebkitTransition: 'background-color 200ms ease-in-out',
-      //zIndex: (_style && _style.zIndex) ? _style.zIndex : 2
+      zIndex: (_style && _style.zIndex) ? _style.zIndex : 2
   });
   return (
     <div>
       <div
         style={style}
         ref={(e) => e ? setTimeout(()=>e.style.backgroundColor='rgba(0,0,0,0.3)',0) : void(0) }
-        onTouchTap={onTouchTap}
-        id='screen-mask'>
+        onTouchTap={onTouchTap}>
       </div>
     </div>
   );

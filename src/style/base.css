@@ -5,7 +5,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: -apple-system,BlinkMacSystemFont,'HelveticaNeue-Light','Helvetica Neue Light','Helvetica Neue',Helvetica,'Roboto','STHeiti','Noto Sans Han','Droid Sans Fallback','Microsoft YaHei Light','Microsoft YaHei',Arial,sans-serif;
-  color: rgba(0,0,0,.8);
+  color: rgba(0,0,0,1);
   font-weight: 400;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
