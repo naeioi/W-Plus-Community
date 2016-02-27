@@ -30,7 +30,7 @@ const PopUpShare = ({ style: _style }) => {
     color: 'rgba(0,0,0,0.9)',
     boxSizing: 'border-box',
     marginTop: 5,
-    fontSize: '5px'
+    fontSize: '14px'
   }, circleStyle = {
     width: '100%',
 	  height: '0',

@@ -61,7 +61,8 @@ class PlusButton extends React.Component {
       width: 76,
       height: 76,
       borderRadius: '50%',
-      fontSize: 50
+      fontSize: 50,
+      WebkitUserSelect: 'none'
       //color: fgColor1
     }, plusStyle = {
       position: 'relative',
@@ -74,19 +75,16 @@ class PlusButton extends React.Component {
       transition: 'transform 300ms ease',
       WebkitUserSelect: 'none'
     }, optionsStyle = {
-      position: 'fixed',
-      bottom: 20,
-      margin: '0 auto'
     }, leftStyle = {
-      position: 'relative',
-      top: 10,
+      position: 'absolute',
+      top: -10,
       left: 10,
       width: 10,
       height: 10,
       backgroundColor: fgColor1
     }, rightStyle = {
-      position: 'relative',
-      top: 10,
+      position: 'absolute',
+      top: -10,
       right: 10,
       width: 10,
       height: 10,
@@ -106,19 +104,16 @@ class PlusButton extends React.Component {
                 >
                 +
               </div>
+              <div
+                style={mergeCSS(optionsStyle, {display: this.state.onPlus ? 'block' : 'none'})}>
+                <div
+                  style={leftStyle}>
+                </div>
+                <div
+                  style={rightStyle}>
+                </div>
+              </div>
             </div>
-        </div>
-        <div
-          style={{display: this.state.onPlus ? 'block' : 'none'}}>
-          <div
-            style={optionsStyle}>
-            <div
-              style={leftStyle}>
-            </div>
-            <div
-              style={rightStyle}>
-            </div>
-          </div>
         </div>
       </div>
     );
