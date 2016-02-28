@@ -13,11 +13,12 @@ const Circle = ({style: _style, children, color = fgColor1, shadow = true}) => {
     borderRadius: '50%',
     overflow: 'hidden',
     backgroundColor: color,
+    WebkitUserSelect: 'none',
     boxShadow: shadow ? '0 0 1px rgba(255,255,255,0.3)' : ''
   }, childrenWrapStyle = {
     paddingTop: '50%',
     paddingBottom: '50%',
-    marginTop: '-0.5em'
+    marginTop: '-0.6em'
   };
   return (
     <div
