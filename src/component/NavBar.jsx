@@ -4,7 +4,6 @@ import { fgColor1, fgColor2 } from '../style/baseCSS'
 import { mergeCSS, copyStyle } from '../utility/style'
 import Button from './Button.jsx'
 import ScreenMask from './ScreenMask.jsx'
-import Circle from './Circle.jsx'
 //import extractHash from '../utility/extractHash'
 
 const NavButton = ({ style: _style, path, iconClassName, text, hash }) => {
@@ -14,7 +13,7 @@ const NavButton = ({ style: _style, path, iconClassName, text, hash }) => {
     color: 'rgba(255,255,255, 1)',
     display: 'block'
   }), iconStyle = {
-    fontSize: '2.2em',
+    fontSize: '2em',
     textAlign: 'center'
   };
   return (
@@ -56,39 +55,41 @@ class PlusButton extends React.Component {
     let circleStyle = {
       display: 'block',
       position: 'relative',
-      top: -35,
+      top: -28,
       margin: '0 auto',
       textAlign: 'center',
       backgroundColor: fgColor1,
-      width: 80,
-      height: 80,
+      width: 76,
+      height: 76,
       borderRadius: '50%',
       fontSize: 50,
       WebkitUserSelect: 'none'
       //color: fgColor1
     }, plusStyle = {
       position: 'relative',
-      top: 20,
+      top: -5,
       fontFamily: 'Arial',
       fontWeight: 100,
-      fontSize: 36,
+      fontSize: 60,
       textAlign: 'center',
       color: 'white',
       transition: 'transform 300ms ease',
       WebkitUserSelect: 'none'
     }, optionsStyle = {
-      color: 'rgba(255,255,255,1)',
-      fontSize: 30
     }, leftStyle = {
       position: 'absolute',
-      top: -42,
-      left: -9,
-      width: 44,
+      top: -10,
+      left: 10,
+      width: 10,
+      height: 10,
+      backgroundColor: fgColor1
     }, rightStyle = {
       position: 'absolute',
-      top: -42,
-      right: -9,
-      width: 44
+      top: -10,
+      right: 10,
+      width: 10,
+      height: 10,
+      backgroundColor: fgColor1
     };
     return (
       <div>
@@ -99,21 +100,19 @@ class PlusButton extends React.Component {
               <div
                 onTouchTap={this.onTouchTap.bind(this)}
                 style={mergeCSS(plusStyle, {
-                  transform: this.state.onPlus ? '':'rotate(45deg)'
+                  transform: this.state.onPlus ? 'rotate(-45deg)' : ''
                 })}
                 >
-                <div className='icon-cross'></div>
+                +
               </div>
               <div
                 style={mergeCSS(optionsStyle, {display: this.state.onPlus ? 'block' : 'none'})}>
-                <Circle
+                <div
                   style={leftStyle}>
-                  <div className='icon-person'></div>
-                </Circle>
-                <Circle
+                </div>
+                <div
                   style={rightStyle}>
-                  <div className='icon-group'></div>
-                </Circle>
+                </div>
               </div>
             </div>
         </div>
@@ -187,7 +186,7 @@ class NavBar extends React.Component {
     buttonWidth = (100-_centerWidth) / 4 + '%',
     buttonStyle = {
       display: 'border-box',
-      paddingTop: 2,
+      paddingTop: 5,
       float: 'left',
       width: buttonWidth,
       height: style.height,
@@ -230,3 +229,55 @@ class NavBar extends React.Component {
 }
 
 export default NavBar
+
+//   return (
+//     <Button
+//       key={ind}
+//       style={hashButtonStyle}>
+//       <div
+//         style={iconStyle}
+//         className={section.iconClassName}></div>
+//       {section.text}
+//     </Button>);
+
+
+
+// return (
+//   <div
+//     key={ind}
+//     style={centerButtonStyle}>
+//     <div
+//       style={circleStyle}>
+//       <Button
+//         style={{
+//           width: 76,
+//           height: 76,
+//           borderRadius: '50%',
+//         }}
+//         onTouchTap={this.onPlusTap.bind(this)}>
+//         <div
+//           ref='iconPlus'
+//           style={mergeCSS(plusStyle, {
+//             transform: this.state.onPlus ? 'rotate(-45deg)' : ''
+//           })}
+//           >
+//           +
+//         </div>
+//       </Button>
+//     </div>
+//   </div>
+// );
+
+
+
+
+// return (
+//   <Button
+//     key={ind}
+//     style={buttonStyle}>
+//     <div
+//       style={iconStyle}
+//       className={section.iconClassName}></div>
+//     {section.text}
+//   </Button>
+// );
