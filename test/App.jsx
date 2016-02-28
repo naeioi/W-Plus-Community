@@ -5,6 +5,7 @@ import { fgColor2 } from '../src/style/baseCSS'
 import ShareButton from '../src/component/ShareButton.jsx'
 import '../src/style/base.css'
 import NavBar from '../src/component/NavBar.jsx'
+import Circle from '../src/component/Circle.jsx'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin();
 
@@ -27,6 +28,15 @@ const App = () => (
         backgroundColor: fgColor2
       }}>
     </div>
+    <Circle
+      style={{
+        position: 'fixed',
+        width: 60,
+        top: '30vh',
+        left: '50vw'
+      }}>
+      nhk
+    </Circle>
   </div>
 )
 

@@ -4,6 +4,7 @@ import { mergeCSS } from '../utility/style'
 import { fgColor1, fgColor2, bgColor1, bgColor2, darkenBG, clearBG } from '../style/baseCSS'
 import ShareButton from './ShareButton.jsx'
 import Button from './Button.jsx'
+import Circle from './Circle.jsx'
 
 /* Layout
 ** |--Back------Title------Share--|
