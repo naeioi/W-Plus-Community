@@ -9,7 +9,6 @@ class ScreenMask extends React.Component{
     this.onTouchTap = onTouchTap;
   }
   componentDidMount() {
-    console.log(this.refs.mask)
     setTimeout(()=>this.refs['mask'].style.backgroundColor = 'rgba(0,0,0,0.3)', 10);
   }
   render() {
