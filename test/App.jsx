@@ -3,7 +3,6 @@ import ReactDOM from 'react-dom'
 import Header from '../src/component/Header.jsx'
 import { fgColor2 } from '../src/style/baseCSS'
 import ShareButton from '../src/component/ShareButton.jsx'
-import '../src/style/base.css'
 import NavBar from '../src/component/NavBar.jsx'
 import Circle from '../src/component/Circle.jsx'
 import injectTapEventPlugin from 'react-tap-event-plugin'
@@ -40,4 +39,5 @@ const App = () => (
   </div>
 )
 
+document.getElementById('startup-loading').innerHTML = '';
 ReactDOM.render(<App />, document.getElementById('App'));
