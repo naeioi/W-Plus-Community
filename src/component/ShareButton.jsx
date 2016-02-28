@@ -14,7 +14,8 @@ class ShareButton extends React.Component {
       color: fgColor2
     });
     this.style = {
-      padding: 13
+      padding: '8 22 12 6',
+      fontSize: 28
     };
   }
 

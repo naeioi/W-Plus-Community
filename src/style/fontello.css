@@ -27,7 +27,7 @@
 
   display: inline-block;
   text-decoration: inherit;
-  width: 1em;
+  /*width: 1em;*/
   margin-top: 0.05em;
   margin-right: .2em;
   text-align: center;
@@ -56,20 +56,34 @@
   /* Uncomment for 3D effect */
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
+
+
+
 .icon-heart-empty:before { content: '\e800'; } /* '' */
 .icon-heart:before { content: '\e801'; } /* '' */
-.icon-share:before { content: '\e802'; } /* '' */
+.icon-location:before { content: '\e802'; } /* '' */
 .icon-left-open-big:before { content: '\e803'; } /* '' */
 .icon-spin4:before { content: '\e804'; } /* '' */
-.icon-share-1:before { content: '\e805'; } /* '' */
+.icon-wechat_moments:before { content: '\e805'; } /* '' */
 .icon-qzone-logo:before { content: '\e806'; } /* '' */
 .icon-sina-weibo:before { content: '\e807'; } /* '' */
 .icon-link:before { content: '\e808'; } /* '' */
 .icon-wechat:before { content: '\e809'; } /* '' */
 .icon-qq:before { content: '\e80a'; } /* '' */
 .icon-ellipsis:before { content: '\e80b'; } /* '' */
-.icon-wechat_moments:before { content: '\e80c'; } /* '' */
-.icon-search:before { content: '\e80d'; } /* '' */
-.icon-location:before { content: '\e80e'; } /* '' */
-.icon-user:before { content: '\e80f'; } /* '' */
-.icon-history:before { content: '\e810'; } /* '' */
+.icon-edit:before { content: '\e80c'; } /* '' */
+.icon-cross:before { content: '\e80d'; } /* '' */
+.icon-tick:before { content: '\e80e'; } /* '' */
+.icon-plus:before { content: '\e80f'; } /* '' */
+.icon-share:before { content: '\e810'; } /* '' */
+.icon-person:before { content: '\e811'; } /* '' */
+.icon-history:before { content: '\e812'; } /* '' */
+.icon-ticket:before { content: '\e813'; } /* '' */
+.icon-time:before { content: '\e814'; } /* '' */
+.icon-like:before { content: '\e815'; } /* '' */
+.icon-discovery:before { content: '\e816'; } /* '' */
+.icon-group:before { content: '\e81d'; } /* '' */
+.icon-my:before { content: '\e81e'; } /* '' */
+.icon-flag:before { content: '\e81f'; } /* '' */
+.icon-clock:before { content: '\e820'; } /* '' */
+.icon-triangle:before { content: '\e821'; } /* '' */

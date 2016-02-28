@@ -16,6 +16,17 @@ const App = () => (
       中文233
     </Header>
     <NavBar />
+    <div
+      onTouchStart={(e)=>console.log(e)}
+      style={{
+        position: 'fixed',
+        top: '50vh',
+        left: '50vw',
+        width: 30,
+        height: 30,
+        backgroundColor: fgColor2
+      }}>
+    </div>
   </div>
 )
 

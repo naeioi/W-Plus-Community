@@ -13,7 +13,8 @@ const NavButton = ({ style: _style, path, iconClassName, text, hash }) => {
     color: 'rgba(255,255,255, 1)',
     display: 'block'
   }), iconStyle = {
-    fontSize: '2em'
+    fontSize: '2em',
+    textAlign: 'center'
   };
   return (
     <Button
@@ -137,7 +138,7 @@ class NavBar extends React.Component {
     }
     this.sections = [{
       path: 'discovery',
-      iconClassName: 'icon-search',
+      iconClassName: 'icon-discovery',
       text: '发现'
     }, {
       path: 'history',
@@ -153,7 +154,7 @@ class NavBar extends React.Component {
       text: '场地'
     }, {
       path: 'my',
-      iconClassName: 'icon-user',
+      iconClassName: 'icon-my',
       text: '我的'
     }];
   }
@@ -188,7 +189,8 @@ class NavBar extends React.Component {
       paddingTop: 5,
       float: 'left',
       width: buttonWidth,
-      height: style.height
+      height: style.height,
+      textAlign: 'center'
    }, centerButtonStyle = mergeCSS(buttonStyle, {
      width: centerWidth
    }), hashButtonStyle = mergeCSS(buttonStyle, {
