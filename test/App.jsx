@@ -27,31 +27,40 @@ const mockEvent = {
 const App = () => (
   <div>
     <Header
+      style={{zIndex: 2}}
       backable={true}
       shareData={{name:'zhu'}}>
       中文233
     </Header>
-    <NavBar />
+    <NavBar style={{zIndex: 1}}/>
     <div
-      onTouchStart={(e)=>console.log(e)}
+      id='events'
       style={{
-        position: 'fixed',
-        top: '50vh',
-        left: '50vw',
-        width: 30,
-        height: 30,
-        backgroundColor: fgColor2
+        overflowY: 'scroll,-moz-scrollbars-none',
+        paddingTop: 44,
+        paddingBottom: 80,
+        zIndex: 0
       }}>
+      <EventEntry event={mockEvent} />
+      <EventEntry event={mockEvent} />
+      <EventEntry event={mockEvent} />
+      <EventEntry event={mockEvent} />
+      <EventEntry event={mockEvent} />
+      <EventEntry event={mockEvent} />
+      <EventEntry event={mockEvent} />
+      <EventEntry event={mockEvent} />
+      <EventEntry event={mockEvent} />
+      <EventEntry event={mockEvent} />
+      <EventEntry event={mockEvent} />
+      <EventEntry event={mockEvent} />
+      <EventEntry event={mockEvent} />
+      <EventEntry event={mockEvent} />
+      <EventEntry event={mockEvent} />
+      <EventEntry event={mockEvent} />
+
     </div>
-    <EventEntry
-      style={{
-        position: 'fixed',
-        height: 80,
-        top: '30vh',
-        left: '0'
-      }}
-      event={mockEvent} />
   </div>
+
 )
 
 document.getElementById('startup-loading').innerHTML = '';

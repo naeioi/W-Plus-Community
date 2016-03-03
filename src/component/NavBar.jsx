@@ -31,95 +31,73 @@ const NavButton = ({ style: _style, path, iconClassName, text, hash }) => {
   );
 };
 
-class PlusButton extends React.Component {
-  constructor({style: _style, toggleScreenMask}) {
-    super();
-    this.style = mergeCSS(_style, {
-    });
-    this.state = {
-      onPlus: false
-    }
-    this.toggleScreenMask = toggleScreenMask;
-  }
-
-  onTouchTap() {
-    this.setState({
-      onPlus: !this.state.onPlus
-    });
-  }
-
-  componentWillUpdate( nextProps, nextState ) {
-    this.toggleScreenMask(this.onTouchTap.bind(this));
-  }
-
-  render() {
-    let circleStyle = {
-      display: 'block',
-      position: 'relative',
-      top: -35,
-      margin: '0 auto',
-      textAlign: 'center',
-      backgroundColor: fgColor1,
-      width: 80,
-      height: 80,
-      borderRadius: '50%',
-      fontSize: 50,
-      WebkitUserSelect: 'none'
-      //color: fgColor1
-    }, plusStyle = {
-      position: 'relative',
-      top: 20,
-      fontFamily: 'Arial',
-      fontWeight: 100,
-      fontSize: 36,
-      textAlign: 'center',
-      color: 'white',
-      transition: 'transform 300ms ease',
-      WebkitUserSelect: 'none'
-    }, optionsStyle = {
-      color: 'rgba(255,255,255,1)',
-      fontSize: 30
-    }, leftStyle = {
-      position: 'absolute',
-      top: -42,
-      left: -9,
-      width: 44,
-    }, rightStyle = {
-      position: 'absolute',
-      top: -42,
-      right: -9,
-      width: 44
-    };
-    return (
-      <div>
-        <div
-          style={this.style}>
+const PlusButton = ({ style, onTouchTap, onPlus }) => {
+  let circleStyle = {
+    display: 'block',
+    position: 'relative',
+    top: -35,
+    margin: '0 auto',
+    textAlign: 'center',
+    backgroundColor: fgColor1,
+    width: 80,
+    height: 80,
+    borderRadius: '50%',
+    fontSize: 50,
+    WebkitUserSelect: 'none'
+    //color: fgColor1
+  }, plusStyle = {
+    position: 'relative',
+    top: 20,
+    fontFamily: 'Arial',
+    fontWeight: 100,
+    fontSize: 36,
+    textAlign: 'center',
+    color: 'white',
+    transition: 'transform 300ms ease',
+    WebkitUserSelect: 'none'
+  }, optionsStyle = {
+    color: 'rgba(255,255,255,1)',
+    fontSize: 30
+  }, leftStyle = {
+    position: 'absolute',
+    top: -42,
+    left: -9,
+    width: 44,
+  }, rightStyle = {
+    position: 'absolute',
+    top: -42,
+    right: -9,
+    width: 44
+  };
+  return (
+    <div>
+      <div
+        style={style}>
+          <div
+            style={circleStyle}>
             <div
-              style={circleStyle}>
-              <div
-                onTouchTap={this.onTouchTap.bind(this)}
-                style={mergeCSS(plusStyle, {
-                  transform: this.state.onPlus ? '':'rotate(45deg)'
-                })}
-                >
-                <div className='icon-cross'></div>
-              </div>
-              <div
-                style={mergeCSS(optionsStyle, {display: this.state.onPlus ? 'block' : 'none'})}>
-                <Circle
-                  style={leftStyle}>
-                  <div className='icon-person'></div>
-                </Circle>
-                <Circle
-                  style={rightStyle}>
-                  <div className='icon-group'></div>
-                </Circle>
-              </div>
+              onTouchTap={onTouchTap}
+              style={mergeCSS(plusStyle, {
+                transform: onPlus ? '':'rotate(45deg)'
+              })}
+              >
+              <div className='icon-cross'></div>
             </div>
-        </div>
+            <div
+              style={mergeCSS(optionsStyle, {display: onPlus ? 'block' : 'none'})}>
+              <Circle
+                style={leftStyle}>
+                <div className='icon-person'></div>
+              </Circle>
+              <Circle
+                style={rightStyle}>
+                <div className='icon-group'></div>
+              </Circle>
+            </div>
+          </div>
       </div>
-    );
-  }
+    </div>
+  );
 }
 
 class NavBar extends React.Component {
@@ -127,7 +105,8 @@ class NavBar extends React.Component {
     super();
     /* location.hash = '#/first/second -> first */
     this.state = {
-      hash: location.hash.split('/')[1]
+      hash: location.hash.split('/')[1],
+      onPlus: false
     };
     const hashChangeListener = (e) => {
       this.setState({hash: location.hash.split('/')[1]});
@@ -160,30 +139,21 @@ class NavBar extends React.Component {
     }];
   }
 
-  toggleScreenMask(onTouchTap) {
-    if(this.masked){
-      ReactDOM.unmountComponentAtNode(this.refs['maskDiv']);
-      this.masked = false;
-    }
-    else {
-      ReactDOM.render((
-        <ScreenMask
-          onTouchTap={onTouchTap}
-          style={{zIndex: 2}} />), this.refs['maskDiv']
-      );
-      this.masked = true;
-    }
+  toggleScreenMask() {
+    this.setState({
+      onPlus: !this.state.onPlus
+    })
   }
 
   render() {
-    let style = {
+    let style = mergeCSS(this.props.style, {
       position: 'fixed',
       bottom: 0,
       width: '100%',
       height: 49,
       backgroundColor: fgColor1,
-      zIndex: 3
-    }, _centerWidth = 25, centerWidth = _centerWidth + '%',
+      zIndex: this.state.onPlus ? 3 : 1
+    }), _centerWidth = 25, centerWidth = _centerWidth + '%',
     buttonWidth = (100-_centerWidth) / 4 + '%',
     buttonStyle = {
       display: 'border-box',
@@ -205,7 +175,7 @@ class NavBar extends React.Component {
                 case 'CENTER':
                   return (
                     <PlusButton
-                      toggleScreenMask={this.toggleScreenMask.bind(this)}
+                      onTouchTap={this.toggleScreenMask.bind(this)}
                       key={ind}
                       style={centerButtonStyle}
                       {...this.state}>
@@ -223,7 +193,9 @@ class NavBar extends React.Component {
             }
           })}
         </div>
-        <div ref='maskDiv' />
+        <ScreenMask
+          onTouchTap={this.toggleScreenMask.bind(this)}
+          style={{display: this.state.onPlus ? 'block':'none', zIndex: 2}} />
       </div>
     )
   }

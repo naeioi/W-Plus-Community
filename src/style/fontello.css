@@ -82,7 +82,9 @@
 .icon-discovery:before { content: '\e816'; } /* '' */
 .icon-time:before { content: '\e817'; } /* '' */
 .icon-group:before { content: '\e81d'; } /* '' */
-.icon-my:before { content: '\e81e'; } /* '' */
+.icon-my:before { content: '\e81e';} /* '' */
+.meter .icon-my {margin-right: 0.3em; margin-left: -0.25em;}
 .icon-flag:before { content: '\e81f'; } /* '' */
 .icon-clock:before { content: '\e820'; } /* '' */
+.meter .icon-clock {margin-right: 0.2em; margin-left: -0.25em;}
 .icon-triangle:before { content: '\e821'; } /* '' */

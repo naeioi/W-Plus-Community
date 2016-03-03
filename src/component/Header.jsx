@@ -10,6 +10,8 @@ import Button from './Button.jsx'
 */
 const Header = ({ style: _style, shareData, children, backable = false }) => {
   let style = mergeCSS(_style, {
+    position: 'fixed',
+    top: 0,
     height: 44,
     width: '100%',
     backgroundColor: fgColor1,
@@ -36,7 +38,7 @@ const Header = ({ style: _style, shareData, children, backable = false }) => {
      width: 44,
      height: 44,
      display: shareData ? 'block' : 'none',
-    verticalAlign: 'middle'
+     verticalAlign: 'middle'
   }, arrowStyle = {
     color:fgColor2,
     padding: '12 18 12 6'

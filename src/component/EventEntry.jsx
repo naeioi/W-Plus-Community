@@ -13,13 +13,17 @@ const jumpToEvent = (event) => {
 const EventEntry = ({ style: _style, event }) => {
   let style = {
     main: mergeCSS(_style, {
+      boxSizing: 'border-box',
+      position: 'relative',
       height: 80,
       width: '100%',
       WebkitUserSelect: 'none',
-      backgroundColor: 'rgba(255,255,255,0.9)',
+      backgroundColor: 'rgb(255,255,255)',
       padding: '0 0',
       color: 'rgba(0,0,0,0.8)',
-      letterSpacing: '0.5px'
+      letterSpacing: '0.5px',
+      margin: '0 0 3 0',
+      borderBottom: '1px solid rgb(230,230,230)'
     }),
     pic: {
       overflow: 'hidden',
@@ -29,16 +33,17 @@ const EventEntry = ({ style: _style, event }) => {
       margin: '0 10 0 2'
     },
     right: {
+      boxSizing: 'border-box',
       position: 'relative',
       overflow: 'hidden',
       height: 75,
       //float: 'right',
-      margin: '5 10'
+      padding: '8 8'
     },
     title: {
-      posision: 'aboslute',
+      position: 'relative',
       top: 0,
-      left: 0,
+      left: -7,
       fontSize: '0.8em',
       color: 'rgba(0,0,0,0.9)'
     },
@@ -64,13 +69,13 @@ const EventEntry = ({ style: _style, event }) => {
       width: 30,
       height: 81,
       color: 'rgba(0,0,0,0.8)',
-      borderLeft: '2px solid rgba(235,235,235,0.7)'
+      borderLeft: '1px dashed rgba(235,235,235,0.7)'
     },
     icon: {
       textAlign: 'center',
       width: 20,
       float: 'left',
-      fontSize: '0.9em'
+      fontSize: '1.3em',
     }
   }
   return (
@@ -85,7 +90,7 @@ const EventEntry = ({ style: _style, event }) => {
         <div style={style.title}>
           {event.title}
         </div>
-        <div style={style.meter.main}>
+        <div className='meter' style={style.meter.main}>
           <div style={style.meter.section}>
             <div style={style.icon} className='icon-my'></div>{event.peopleCnt.now}/{event.peopleCnt.full}
           </div>

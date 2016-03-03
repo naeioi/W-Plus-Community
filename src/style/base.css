@@ -1,6 +1,14 @@
 @import './animation.css';
 @import './fontello.css';
 @import './loading.css';
+
+#events::-webkit-scrollbar {
+  display: none;
+}
+#events {
+  overflow: -moz-scrollbars-none;
+}
+
 body {
   background-color: #eee;
   padding: 0;
