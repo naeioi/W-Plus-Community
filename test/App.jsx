@@ -5,8 +5,24 @@ import { fgColor2 } from '../src/style/baseCSS'
 import ShareButton from '../src/component/ShareButton.jsx'
 import NavBar from '../src/component/NavBar.jsx'
 import Circle from '../src/component/Circle.jsx'
+import EventEntry from '../src/component/EventEntry.jsx'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin();
+
+const mockEventImg = require('../static/mockEventImg.png');
+const mockEvent = {
+  title: '尤克里里分享会',
+  '_id': 1423423,
+  thumbnail: mockEventImg,
+  peopleCnt: {
+    full: 10,
+    now: 2
+  },
+  location: '西南一2069',
+  due: {
+    date: '2016-03-01'
+  }
+};
 
 const App = () => (
   <div>
@@ -27,15 +43,14 @@ const App = () => (
         backgroundColor: fgColor2
       }}>
     </div>
-    <Circle
+    <EventEntry
       style={{
         position: 'fixed',
-        width: 60,
+        height: 80,
         top: '30vh',
-        left: '50vw'
-      }}>
-      nhk
-    </Circle>
+        left: '0'
+      }}
+      event={mockEvent} />
   </div>
 )
 

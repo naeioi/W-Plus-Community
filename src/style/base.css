@@ -17,6 +17,11 @@ body {
   -webkit-touch-callout: none;
 }
 
+::selection {
+  /* configure selected text color */
+  background: #fff2a8;
+}
+
 a {
   text-decoration: none;
 }

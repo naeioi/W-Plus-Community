@@ -3,7 +3,6 @@ var webpack = require('webpack');
 module.exports = {
   entry: {
       app: './test/startup.js',
-      vendor: ['react', 'react-dom']
   },
   output: {
     path: './test',
@@ -36,14 +35,18 @@ module.exports = {
       }, {
         test: /.html$/,
         loader: 'html-loader'
+      },
+      {
+        test: /.(png|jpg)$/,
+        loader: 'file-loader'
       }
     ]
   },
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'vendor.js',
-      minChunk: Infinity
-    })
-  ]
+  // plugins: [
+  //   new webpack.optimize.CommonsChunkPlugin({
+  //     name: 'vendor',
+  //     filename: 'vendor.js',
+  //     minChunk: Infinity
+  //   })
+  // ]
 }

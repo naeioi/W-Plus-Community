@@ -1,6 +1,6 @@
 import '../src/style/base.css'
-require.ensure(['../static/loading.html'], (require)=>{
+require.ensure(['../static/loading.html', '../src/App.jsx'], (require)=>{
   let html = require('../static/loading.html');
   document.getElementById('startup-loading').innerHTML = html;
-  //require('./App.jsx');
+  require('./App.jsx');
 });

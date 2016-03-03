@@ -2,15 +2,12 @@ var webpack = require("webpack");
 
 module.exports = {
   entry: {
-    app: './src/App.jsx',
-    startup: './src/Startup.jsx',
-    vendor: ['react', 'react-dom']
+    app: './src/startup.js',
   },
   output: {
     path: './dist',
     filename: '[name].js'
   },
-  devtool: "#cheap-module-eval-source-map",
   module: {
     loaders: [
       {
@@ -20,14 +17,25 @@ module.exports = {
         query: {
           presets: ['es2015', 'react']
         }
+      },
+      { test: /\.css$/, loader: "style-loader!css-loader" },
+      {
+        test   : /\.(ttf|eot|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        loader : 'file-loader'
+      },{
+        test: /\.svg$/,
+        loader: 'svg-inline'
+      }, {
+        test: /.html$/,
+        loader: 'html-loader'
       }
     ]
   },
-  plugins: [
-    new webpack.optimize.CommonsChunkPlugin({
-      name: 'vendor',
-      filename: 'vendor.js',
-      minChunk: Infinity
-    })
-  ]
+  // plugins: [
+  //   new webpack.optimize.CommonsChunkPlugin({
+  //     name: 'vendor',
+  //     filename: 'vendor.js',
+  //     minChunk: Infinity
+  //   })
+  // ]
 }
