@@ -43,7 +43,8 @@ const PlusButton = ({ style, onTouchTap, onPlus }) => {
     height: 80,
     borderRadius: '50%',
     fontSize: 50,
-    WebkitUserSelect: 'none'
+    WebkitUserSelect: 'none',
+    cursor: 'pointer'
     //color: fgColor1
   }, plusStyle = {
     position: 'relative',

@@ -7,7 +7,7 @@ import { mergeCSS } from '../utility/style'
 */
 
 const jumpToEvent = (event) => {
-  //location.hash = `#/event/${event._id}`;
+  location.hash = `#/event/${event._id}`;
 }
 
 const EventEntry = ({ style: _style, event }) => {
