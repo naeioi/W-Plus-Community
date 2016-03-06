@@ -79,7 +79,7 @@ const PlusButton = ({ style, onTouchTap, onPlus }) => {
             <div
               onTouchTap={onTouchTap}
               style={mergeCSS(plusStyle, {
-                transform: onPlus ? '':'rotate(45deg)'
+                transform: onPlus ? '':'rotate(135deg)'
               })}
               >
               <div className='icon-cross'></div>

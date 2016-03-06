@@ -8,7 +8,6 @@ import Circle from '../src/component/Circle.jsx'
 import EventEntry from '../src/component/EventEntry.jsx'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin();
-
 const mockEventThumbnail = require('../static/mockEventThumbnail.png');
 const mockEventPic = require('../static/mockEventPic.jpeg')
 const mockEvent = {
@@ -26,9 +25,8 @@ const mockEvent = {
     start: '15:30',
     end: '16:30'
   },
-  description: 'Maecenas bibendum non dui vel luctus.Duis suscipit consequat quam, vel viverravelit congue a. Mauris at nibh egetsapien cursus tempus. Morbi dictum non',
+  description: 'Maecenas bibendum non dui vel luctus. Duis suscipit consequat quam, vel viverravelit congue a. Mauris at nibh egetsapien cursus tempus. Morbi dictum non',
 };
-
 const App = () => (
   <div>
     <Header
