@@ -39,6 +39,11 @@ a {
     content: ' \25CF';
 }
 
+textarea {
+    border: 2px solid #dadada;
+    border-radius: 7px;
+}
+
 .clearFloat {
   clear: both;
 }

@@ -6,6 +6,7 @@ import ShareButton from '../src/component/ShareButton.jsx'
 import NavBar from '../src/component/NavBar.jsx'
 import Circle from '../src/component/Circle.jsx'
 import EventEntry from '../src/component/EventEntry.jsx'
+import '../src/utility/stickyfill'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 injectTapEventPlugin();
 const mockEventThumbnail = require('../static/mockEventThumbnail.png');

@@ -14,7 +14,6 @@ const EventPage = ({ event: e }) => {
         shareDate={{name: 'zhu'}}>
         活动
       </Header>
-      <NavBar style={{zIndex: 1}} />
       <Event event={e} />
     </div>
   );

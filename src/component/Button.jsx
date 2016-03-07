@@ -8,7 +8,7 @@ class Button extends React.Component {
     this.onTouchTap = onTouchTap;
     this._style = _style;
     this.children = children;
-    this.doDarkenBG = true;
+    this.doDarkenBG = doDarkenBG;
   }
   render() {
     let style = mergeCSS(this._style, {
@@ -20,6 +20,7 @@ class Button extends React.Component {
     if (this.doDarkenBG)
       return (
         <a
+          className={this.props.className}
           href='javascript:void(0)'
           onTouchStart={darkenBG}
           onTouchEnd={clearBG}
@@ -32,6 +33,7 @@ class Button extends React.Component {
     else
       return (
         <a
+          className={this.props.className}
           href='javascript:void(0)'
           onTouchTap={this.onTouchTap}
           style={style}>

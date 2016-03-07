@@ -1,4 +1,5 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import { fgColor3, bgColor2 } from '../style/baseCSS'
 import { CommentSection } from './Comment.jsx'
 import Button from './Button.jsx'
@@ -10,7 +11,7 @@ import Button from './Button.jsx'
 const Event = ({ event: e }) => {
   let s = {
     main: {
-      overflowY: 'scroll',
+      overflowY: 'hidden',
       width: '100%',
       paddingTop: 44,
       paddingBottom: 80
@@ -34,7 +35,9 @@ const Event = ({ event: e }) => {
       fontWeight: 'bold',
       fontSize: '0.9em',
       margin: '2 0 2 0',
-      borderBottom: '1px solid rgb(200,200,200)'
+      borderBottom: '1px solid rgb(200,200,200)',
+      position: 'sticky',
+      top: 45
     },
     meter: {
       marginBottom: 9,
@@ -46,6 +49,7 @@ const Event = ({ event: e }) => {
 
     },
     detail: {
+      fontSize: '0.8em',
       padding: '15 20',
       color: bgColor2,
       backgroundColor: 'rgb(255,255,255)',
@@ -73,6 +77,9 @@ const Event = ({ event: e }) => {
       </div>
       {/* apply button */}
       <Button
+        darkenBG={false}
+        ref={(e)=>Stickyfill.add(ReactDOM.findDOMNode(e))}
+        className='sticky'
         style={s.applyButton}>
         <div className='icon-plus'>加入</div>
       </Button>
