@@ -98,7 +98,7 @@ class CommentSection extends React.Component {
         display: 'block',
         minHeight: 19,
         overflow: 'hidden',
-        paddingTop: 1
+        paddingTop: 1,
       },
       input: {
         border: '0 none white',

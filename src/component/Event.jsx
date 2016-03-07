@@ -19,7 +19,8 @@ const Event = ({ event: e }) => {
     posterWrap: {
       height: 150,
       width: '100%',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      position: 'relative'
     },
     poster: {
       display: 'block',
@@ -37,7 +38,8 @@ const Event = ({ event: e }) => {
       margin: '2 0 2 0',
       borderBottom: '1px solid rgb(200,200,200)',
       position: 'sticky',
-      top: 45
+      top: 45,
+      zIndex: 1
     },
     meter: {
       marginBottom: 9,
@@ -63,6 +65,15 @@ const Event = ({ event: e }) => {
       margin: '1 4 0 4',
       boxSizing: 'border-box',
       padding: '5 13 15 13'
+    },
+    title: {
+      fontSize: 20,
+      width: '60%',
+      textAlign: 'center',
+      color: 'white',
+      fontWeight: 'bold',
+      textShadow: '0 0 3px rgba(0,0,0,0.5)',
+      margin: '0 auto'
     }
   };
   return (
@@ -73,7 +84,9 @@ const Event = ({ event: e }) => {
           src={e.pic}
           style={s.poster}>
         </img>
-        <div style={s.title}>{e.title}</div>
+        <div style={{width: '100%',position: 'absolute',top: 50,}}>
+          <div style={s.title}>{e.title}</div>
+        </div>
       </div>
       {/* apply button */}
       <Button
