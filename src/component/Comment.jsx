@@ -1,7 +1,8 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { mergeCSS } from '../utility/style'
-import { bgColor1, fgColor1 } from '../style/baseCSS'
+import { bgColor2, bgColor1, fgColor1 } from '../style/baseCSS'
+import Button from './Button.jsx'
 
 const mockComment = {
   thumbnail: require('../../static/mockCommentThumbnail.png'),
@@ -108,28 +109,31 @@ class CommentSection extends React.Component {
         backgroundColor: 'rgb(240,240,240)',
         resize: 'none',
         width: '100%',
-        padding: '2 10'
+        padding: '2 10',
+        fontFamily: 'verdana'
       },
       inputBtn: {
-        width: 20,
-        height: 20,
+        width: 30,
+        height: 30,
         fontSize: 30,
-        textAlign: 'center'
+        textAlign: 'center',
+        color: bgColor2,
         //backgroundColor: 'rgba(0,0,0,0.3)',
       },
       inputBtnWrap: {
         float: 'right',
         marginLeft: 0,
-        marginTop: -5
+        marginTop: -5,
+        marginRight: -6
       }
     }
     return (
       <div style={style.main}>
         <div style={style.inputBar}>
           <div style={{float: 'left', fontWeight: 'bold', marginRight: 10, marginTop: 1}}>评论</div>
-          <div style={style.inputBtnWrap}>
+          <Button style={style.inputBtnWrap}>
             <div className='icon-edit' style={style.inputBtn}></div>
-          </div>
+          </Button>
           <div style={style.inputWrap}>
             <textarea rows='1' style={style.input} type='text' ref='input'></textarea>
           </div>

@@ -23,10 +23,11 @@ const mockEvent = {
 
 require.ensure(['./App.jsx', 'react-dom', 'react', '../src/EventPage.jsx'], (require)=>{
   let EventPage = require('../src/EventPage.jsx').default;
-  let App = require('./App.jsx').default;
+  let History = require('../src/History.jsx').default;
+  let Discovery = require('../src/Discovery.jsx').default;
   let ReactDOM = require('react-dom');
   let React = require('react');
   document.getElementById('startup-loading').innerHTML = '';
-  ReactDOM.render(<EventPage event={mockEvent}/>, document.getElementById('App'));
-  //ReactDOM.render(<App />, document.getElementById('App'));
+  //ReactDOM.render(<EventPage event={mockEvent}/>, document.getElementById('App'));
+  ReactDOM.render(<Discovery />, document.getElementById('App'));
 });
