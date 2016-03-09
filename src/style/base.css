@@ -2,7 +2,7 @@
 @import './fontello.css';
 @import './loading.css';
 
-#events::-webkit-scrollbar {
+.noscrollbar::-webkit-scrollbar {
   display: none;
 }
 #events {

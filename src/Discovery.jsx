@@ -1,10 +1,11 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import Header from '../src/component/Header.jsx'
-import { fgColor1, fgColor2 } from '../src/style/baseCSS'
+import { fgColor1, fgColor2, bgColor2, bgColor1 } from '../src/style/baseCSS'
 import ShareButton from '../src/component/ShareButton.jsx'
 import NavBar from '../src/component/NavBar.jsx'
 import Circle from '../src/component/Circle.jsx'
+import Button from '../src/component/Button.jsx'
 import Showcase from '../src/component/Showcase.jsx'
 import EventEntry from '../src/component/EventEntry.jsx'
 import injectTapEventPlugin from 'react-tap-event-plugin'
@@ -12,40 +13,8 @@ try{
 injectTapEventPlugin();
 } catch(e) {}
 import '../src/utility/stickyfill'
-const mockEventThumbnail = require('../static/mockEventThumbnail.png');
-const mockEventPic = require('../static/mockEventPic.jpeg')
-const mockEvent = {
-  title: '尤克里里分享会',
-  '_id': 1423423,
-  thumbnail: mockEventThumbnail,
-  pic: mockEventPic,
-  peopleCnt: {
-    full: 10,
-    now: 2
-  },
-  location: '西南一2069',
-  due: {
-    date: '2016-03-01',
-    start: '15:30',
-    end: '16:30'
-  },
-  description: 'Maecenas bibendum non dui vel luctus. Duis suscipit consequat quam, vel viverravelit congue a. Mauris at nibh egetsapien cursus tempus. Morbi dictum non',
-};
 
-const mockPosters = [
-  {
-    type: 'event',
-    event: mockEvent
-  },
-  {
-    type: 'event',
-    event: mockEvent
-  },
-  {
-    type: 'event',
-    event: mockEvent
-  }
-];
+import { mockEvent, mockPosters } from './mockData'
 
 const Discovery = () => {
   let s = {
@@ -63,12 +32,25 @@ const Discovery = () => {
       border: '1px solid black'
     },
     featureContainer: {
-      height: 60,
-      border: '1px solid black'
+      height: 65,
+      position: 'relative',
+      paddingLeft: '7%',
+      paddingRight: '7%',
+      backgroundColor: 'white',
+      marginBottom: 4,
+      borderBottom: '1px solid rgb(230,230,230)'
+    },
+    button: {
+      boxSizing: 'border-box',
+      padding: '5 0',
+      color: bgColor2,
+      fontSize: '0.4em',
+      width: '25%',
+      height: '100%',
+      float: 'left'
     },
     filterWrap: {
       height: 30,
-      border: '1px solid black',
       display: 'none'
     },
     searchBarWrap: {
@@ -86,7 +68,7 @@ const Discovery = () => {
       backgroundColor: 'rgb(240,240,240)',
       resize: 'none',
       width: '100%',
-      padding: '2 10 2 25',
+      padding: '2 10 2 28',
       fontFamily: 'verdana',
       borderRadius: 10
     },
@@ -123,6 +105,30 @@ const Discovery = () => {
           style={s.posterContainer}>
         </Showcase>
         <div style={s.featureContainer}>
+          <Button style={s.button}>
+            <Circle
+              style={{width: '60%'}}
+              ></Circle>
+            W-cafe
+          </Button>
+          <Button style={s.button}>
+            <Circle
+              style={{width: '60%'}}
+              ></Circle>
+            数学建模
+          </Button>
+          <Button style={s.button}>
+            <Circle
+              style={{width: '60%'}}
+              ></Circle>
+            高数赶集
+          </Button>
+          <Button style={s.button}>
+            <Circle
+              style={{width: '60%'}}
+              ></Circle>
+            时尚党建
+          </Button>
         </div>
         <div style={s.filterWrap}>
         </div>

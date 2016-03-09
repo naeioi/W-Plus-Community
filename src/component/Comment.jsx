@@ -4,12 +4,7 @@ import { mergeCSS } from '../utility/style'
 import { bgColor2, bgColor1, fgColor1 } from '../style/baseCSS'
 import Button from './Button.jsx'
 
-const mockComment = {
-  thumbnail: require('../../static/mockCommentThumbnail.png'),
-  userName: '王小明',
-  content: '活动需要自己带些什么呢？活动需要自己带些什么呢？活动需要自己带些什么呢？活动需要自己带些什么呢？活动需要自己带些什么呢？活动需要自己带些什么呢？活动需要自己带些什么呢？活动需要自己带些什么呢？活动需要自己带些什么呢？',
-  date: '2月14日'
-};
+import { mockComment } from '../mockData'
 
 const CommentEntry = ({style: _style, comment}) => {
   let style = {
@@ -127,6 +122,7 @@ class CommentSection extends React.Component {
         marginRight: -6
       }
     }
+    console.log(mockComment)
     return (
       <div style={style.main}>
         <div style={style.inputBar}>
