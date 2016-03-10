@@ -12,7 +12,8 @@ class TimePicker extends React.Component {
     this.state = {
       startHour: startHour,
       endHour: endHour,
-      notification: ''
+      notification: '',
+      ok: false
     }
   }
 
@@ -28,8 +29,42 @@ class TimePicker extends React.Component {
   }
 
   componentDidUpdate() {
-    if(this.state.startHour && this.state.endHour) {
-      this.props.select(this.state.startHour, this.state.endHour);
+
+    const mapNotifier = (str) => {
+      switch(this.hourState(str)) {
+        case 'invalid':
+          return '选中时间不可用';
+        case 'full':
+          return '选中时间满员';
+        default:
+          return '';
+      }
+    }
+
+    let notifier = '';
+    if(this.state.startHour) {
+      notifier = mapNotifier(this.state.startHour);
+      if(this.state.endHour) {
+        notifier = notifier || mapNotifier(this.state.endHour);
+        for(let hour = moment(this.state.startHour); hour < this.state.endHour; hour.add(1, 'hour')) {
+          notifier = notifier || mapNotifier(hour);
+        }
+      }
+    }
+    if(notifier != this.state.notification)
+      this.setState({
+        notification: notifier,
+        ok: false
+      })
+    if((this.state.startHour||this.state.endHour)&&!notifier && !this.state.ok) {
+      this.setState({
+        ok: true
+      })
+    }
+    else if(notifier && this.state.ok) {
+      this.setState({
+        ok: false
+      })
     }
   }
 
@@ -48,7 +83,8 @@ class TimePicker extends React.Component {
         width: '100%',
         border: '1px solid rgba(0,0,0,0.1)',
         maxWidth: 250,
-        margin: '0 auto'
+        margin: '0 auto',
+        backgroundColor: 'white'
       },
       header: {
         position: 'relative',
@@ -68,7 +104,8 @@ class TimePicker extends React.Component {
         padding: '0 10%',
         textAlign: 'center',
         backgroundColor: 'white',
-        color: '#cc0000'
+        color: '#cc0000',
+        fontSize: '0.5em'
       },
       disableHourWrap: {
         boxSizing: 'border-box',
@@ -83,6 +120,16 @@ class TimePicker extends React.Component {
       hint: {
         width: 10,
         float: 'left'
+      },
+      button: {
+        boxSizing: 'border-box',
+        position: 'absolute',
+        right: 0,
+        top: 0,
+        height: '100%',
+        padding: '5 0',
+        color: fgColor2,
+        fontWeight: 'bold'
       }
     };
 
@@ -91,6 +138,7 @@ class TimePicker extends React.Component {
         boxSizing: 'border-box',
         backgroundColor: 'rgb(255, 255, 255)',
         width: '20%',
+        margin: '1% 0',
         height: 35,
         float: 'left',
         textAlign: 'center',
@@ -99,22 +147,27 @@ class TimePicker extends React.Component {
       };
 
       const hs = this.hourState(hour);
-      const isPeriodEnd = (sStartHour && hour.hour() == sStartHour.hour()) || (sEndHour && hour.hour() == sEndHour.hour());
-      const isInPeriod = hour > sStartHour && hour < sEndHour;
+      const isPeriodEnd = (this.state.startHour && hour.hour() === this.state.startHour.hour()) || (this.state.endHour && hour.hour() === this.state.endHour.hour());
+      const isInPeriod = this.state.startHour && this.state.endHour && hour > this.state.startHour && hour < this.state.endHour;
 
       if(hs === 'invalid')
         style = mergeCSS(style, {
           backgroundColor: 'rgb(255,255,255)',
           color: 'rgb(200,200,200)',
         });
+      if(isPeriodEnd) {
+        style.backgroundColor = 'rgb(0, 177, 213)';
+        style.color = 'white';
+      }
+      else if(isInPeriod) {
+        style.backgroundColor = 'rgb(193, 229, 241)';
+        style.color = 'white';
+      }
       if(hs === 'occupied')
         style.color = fgColor1;
       if(hs === 'full')
         style.color = 'red';
-      if(isPeriodEnd)
-        style.backgroundColor = 'blue';
-      if(isInPeriod)
-        style.backgroundColor = 'blue';
+
       return style;
     }
 
@@ -122,6 +175,11 @@ class TimePicker extends React.Component {
       <div style={s.main}>
         <div style={s.header}>
           {date.format('MMM DD')}
+          <Button
+            className='icon-tick'
+            onTouchTap={()=>this.state.ok?select(this.state.startHour, this.state.endHour):void(0)}
+            style={s.button}>
+          </Button>
         </div>
         <div
           style={s.notifier}
@@ -140,25 +198,48 @@ class TimePicker extends React.Component {
                   onTouchTap={
                     ((str) => (
                       ()=> {
+                        let hour = moment(str);
                         if(!this.state.startHour) {
                           this.setState({
-                            startHour: moment(str)
+                            startHour: hour,
+                            ok: false
                           })
                         }
-                        else if(this.state.startHour.hour() === moment(str).hour()) {
+                        else if(this.state.startHour.hour() === hour.hour()) {
                           this.setState({
                             startHour: null,
-                            endHour: null
+                            endHour: null,
+                            ok: false
                           })
                         }
                         else if(!this.state.endHour) {
+                          if(this.state.startHour < hour) {
+                            this.setState({
+                              endHour: hour,
+                              ok: false
+                            })
+                          } else {
+                            this.setState({
+                              startHour: hour,
+                              endHour: this.state.startHour
+                            })
+                          }
+                        }
+                        else if(this.state.endHour.hour() === hour.hour()) {
                           this.setState({
-                            endHour: moment(str)
+                            endHour: null,
+                            ok: false
                           })
                         }
-                        else if(this.state.endHour.hour() === moment(str).hour()) {
+                        else if(this.state.startHour > hour) {
                           this.setState({
-                            endHour: null
+                            startHour: hour,
+                            endHour: this.state.startHour
+                          })
+                        }
+                        else if(true) {
+                          this.setState({
+                            endHour: hour
                           })
                         }
                       }
