@@ -124,7 +124,7 @@ class DatePicker extends React.Component {
             onTouchTap={()=>this.setState({selDate: selDate.add(1, 'month')})}
             >
           </Button>
-          {this.state.selDate.format('MMMM')}
+          {this.state.selDate.format('MMM')}
         </div>
         {
           ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'].map((day)=>(

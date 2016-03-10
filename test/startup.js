@@ -29,8 +29,10 @@ require.ensure(['./App.jsx', 'react-dom', 'react', '../src/EventPage.jsx'], (req
   let React = require('react');
   let DatePicker = require('../src/component/DatePicker.jsx').default;
   let mountPoint = document.getElementById('App');
+  let TimePicker = require('../src/component/TimePicker.jsx').default;
   document.getElementById('startup-loading').innerHTML = '';
   //ReactDOM.render(<EventPage event={mockEvent}/>, document.getElementById('App'));
   //ReactDOM.render(<Discovery />, document.getElementById('App'));
-  ReactDOM.render(<DatePicker defaultDate={"2015/01/01"}/>, mountPoint);
+  //ReactDOM.render(<DatePicker defaultDate={"2015/01/01"}/>, mountPoint);
+  ReactDOM.render(<TimePicker />, mountPoint);
 });
