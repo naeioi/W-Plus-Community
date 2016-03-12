@@ -28,54 +28,82 @@ class TimePicker extends React.Component {
       ( onlyFuture && hour >= moment() ? 'empty' : 'invalid');
   }
 
-  componentDidUpdate() {
+  update(hour) {
+
+    let _s = this.state.startHour, _e = this.state.endHour;
+
+    if(!this.state.startHour) {
+      _s = hour;
+    }
+    else if(this.state.startHour.hour() === hour.hour()) {
+      _s = _e = null;
+    }
+    else if(!this.state.endHour) {
+      if(this.state.startHour < hour) {
+        _e = hour;
+      } else {
+        _s = hour;
+      }
+    }
+    else if(this.state.endHour.hour() === hour.hour()) {
+      _e = null;
+    }
+    else if(this.state.startHour > hour) {
+      _s = hour,
+      _e = this.state.startHour
+    }
+    else if(true) {
+      _e = hour
+    }
 
     const mapNotifier = (str) => {
-      switch(this.hourState(str)) {
-        case 'invalid':
-          return '选中时间不可用';
-        case 'full':
-          return '选中时间满员';
-        default:
-          return '';
-      }
+      return ({
+        'invalid': '选中时间不可用',
+        'full': '选中时间满员',
+      })[this.hourState(str)] || '';
     }
 
     let notifier = '';
-    if(this.state.startHour) {
-      notifier = mapNotifier(this.state.startHour);
-      if(this.state.endHour) {
-        notifier = notifier || mapNotifier(this.state.endHour);
-        for(let hour = moment(this.state.startHour); hour < this.state.endHour; hour.add(1, 'hour')) {
+    if(_s) {
+      notifier = mapNotifier(_s);
+      if(_e) {
+        notifier = notifier || mapNotifier(_e);
+        for(let hour = moment(_s); hour < _e; hour.add(1, 'hour')) {
           notifier = notifier || mapNotifier(hour);
         }
       }
     }
-    if(notifier != this.state.notification)
-      this.setState({
-        notification: notifier,
-        ok: false
-      })
-    if((this.state.startHour||this.state.endHour)&&!notifier && !this.state.ok) {
-      this.setState({
-        ok: true
-      })
-    }
-    else if(notifier && this.state.ok) {
-      this.setState({
-        ok: false
-      })
+
+    let ok = !notifier && _s;
+    this.setState({
+      startHour: _s,
+      endHour: _e,
+      notification: notifier,
+      ok: ok
+    })
+  }
+
+  select() {
+
+    const {
+      startHour: _s,
+      endHour: _e,
+      ok
+    } = this.state;
+
+    if(ok) {
+      this.props.select(_s, _e?_e:_s);
     }
   }
 
   render() {
 
     const {
-      select, date=moment()
+      date=moment()
     } = this.props;
 
     const {
-      startHour: sStartHour, endHour: sEndHour
+      startHour: _s, endHour: _e
     } = this.state;
 
     const s = {
@@ -147,8 +175,8 @@ class TimePicker extends React.Component {
       };
 
       const hs = this.hourState(hour);
-      const isPeriodEnd = (this.state.startHour && hour.hour() === this.state.startHour.hour()) || (this.state.endHour && hour.hour() === this.state.endHour.hour());
-      const isInPeriod = this.state.startHour && this.state.endHour && hour > this.state.startHour && hour < this.state.endHour;
+      const isPeriodEnd = (_s && hour.hour() === _s.hour()) || (_e && hour.hour() === _e.hour());
+      const isInPeriod = _s && _e && hour > _s && hour < _e;
 
       if(hs === 'invalid')
         style = mergeCSS(style, {
@@ -177,7 +205,7 @@ class TimePicker extends React.Component {
           {date.format('MMM DD')}
           <Button
             className='icon-tick'
-            onTouchTap={()=>this.state.ok?select(this.state.startHour, this.state.endHour):void(0)}
+            onTouchTap={this.select.bind(this)}
             style={s.button}>
           </Button>
         </div>
@@ -195,55 +223,7 @@ class TimePicker extends React.Component {
                 style={mapHourStyle(hour)}
                 >
                 <Button
-                  onTouchTap={
-                    ((str) => (
-                      ()=> {
-                        let hour = moment(str);
-                        if(!this.state.startHour) {
-                          this.setState({
-                            startHour: hour,
-                            ok: false
-                          })
-                        }
-                        else if(this.state.startHour.hour() === hour.hour()) {
-                          this.setState({
-                            startHour: null,
-                            endHour: null,
-                            ok: false
-                          })
-                        }
-                        else if(!this.state.endHour) {
-                          if(this.state.startHour < hour) {
-                            this.setState({
-                              endHour: hour,
-                              ok: false
-                            })
-                          } else {
-                            this.setState({
-                              startHour: hour,
-                              endHour: this.state.startHour
-                            })
-                          }
-                        }
-                        else if(this.state.endHour.hour() === hour.hour()) {
-                          this.setState({
-                            endHour: null,
-                            ok: false
-                          })
-                        }
-                        else if(this.state.startHour > hour) {
-                          this.setState({
-                            startHour: hour,
-                            endHour: this.state.startHour
-                          })
-                        }
-                        else if(true) {
-                          this.setState({
-                            endHour: hour
-                          })
-                        }
-                      }
-                    ))(hour.format())}
+                  onTouchTap={this.update.bind(this, moment(hour))}
                   style={s.hour}>
                   {hour.hour()}
                 </Button>

@@ -34,5 +34,5 @@ require.ensure(['./App.jsx', 'react-dom', 'react', '../src/EventPage.jsx'], (req
   //ReactDOM.render(<EventPage event={mockEvent}/>, document.getElementById('App'));
   //ReactDOM.render(<Discovery />, document.getElementById('App'));
   //ReactDOM.render(<DatePicker defaultDate={"2015/01/01"}/>, mountPoint);
-  ReactDOM.render(<TimePicker />, mountPoint);
+  ReactDOM.render(<TimePicker hourState={(h)=>h.hour() == '0' ? 'occupied' : 'empty'}/>, mountPoint);
 });
