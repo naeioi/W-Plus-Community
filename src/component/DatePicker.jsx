@@ -2,7 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import Button from './Button.jsx'
 import { fgColor1, fgColor2, bgColor1, bgColor2 } from '../style/baseCSS'
-import { setAlpha } from '../utility/style'
+import { mergeCSS, setAlpha } from '../utility/style'
 
 class DatePicker extends React.Component {
   constructor({ defaultDate }) {
@@ -33,11 +33,13 @@ class DatePicker extends React.Component {
     } = this.state;
 
     const s = {
-      main: {
+      main: mergeCSS(this.props.style, {
+        position: 'absolute',
+        right: 0,
         width: '100%',
         border: '1px solid rgba(0,0,0,0.1)',
         maxWidth: 450
-      },
+      }),
       header: {
         position: 'relative',
         textAlign: 'center',

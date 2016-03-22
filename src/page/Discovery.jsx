@@ -1,20 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Header from '../src/component/Header.jsx'
-import { fgColor1, fgColor2, bgColor2, bgColor1 } from '../src/style/baseCSS'
-import ShareButton from '../src/component/ShareButton.jsx'
-import NavBar from '../src/component/NavBar.jsx'
-import Circle from '../src/component/Circle.jsx'
-import Button from '../src/component/Button.jsx'
-import Showcase from '../src/component/Showcase.jsx'
-import EventEntry from '../src/component/EventEntry.jsx'
+import Header from '../component/Header.jsx'
+import { fgColor1, fgColor2, bgColor2, bgColor1 } from '../style/baseCSS'
+import ShareButton from '../component/ShareButton.jsx'
+import NavBar from '../component/NavBar.jsx'
+import Circle from '../component/Circle.jsx'
+import Button from '../component/Button.jsx'
+import Showcase from '../component/Showcase.jsx'
+import EventEntry from '../component/EventEntry.jsx'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 try{
 injectTapEventPlugin();
 } catch(e) {}
-import '../src/utility/stickyfill'
+import '../utility/stickyfill'
 
-import { mockEvent, mockPosters } from './mockData'
+import { mockEvent, mockPosters } from '../mockData'
 
 const Discovery = () => {
   let s = {
@@ -79,6 +79,9 @@ const Discovery = () => {
   return (
     <div>
       <Header
+        Extra={
+          <ShareButton />
+        }
         style={{zIndex: 2, borderBottom: '0px'}}
         backable={true}
         shareData={{name:'zhu'}}>

@@ -3,12 +3,13 @@ import ReactDOM from 'react-dom'
 import { mergeCSS } from '../utility/style'
 
 class ScreenMask extends React.Component{
-  constructor({style: _style, onTouchTap}) {
+  constructor({style: _style, onTouchTap, alpha}) {
     super();
     this.onTouchTap = onTouchTap;
+    this.alpha = alpha || 0.3;
   }
   componentDidMount() {
-    setTimeout(()=>this.refs['mask'].style.backgroundColor = 'rgba(0,0,0,0.3)', 10);
+    setTimeout(()=>this.refs['mask'].style.backgroundColor = `rgba(0,0,0,${this.alpha})`, 10);
   }
   render() {
     let style = mergeCSS(this.props.style, {

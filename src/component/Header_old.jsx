@@ -8,7 +8,7 @@ import Button from './Button.jsx'
 /* Layout
 ** |--Back------Title------Share--|
 */
-const Header = ({ style: _style, Extra, children, backable = false }) => {
+const Header = ({ style: _style, shareData, children, backable = false }) => {
   let style = mergeCSS(_style, {
     position: 'fixed',
     top: 0,
@@ -31,13 +31,13 @@ const Header = ({ style: _style, Extra, children, backable = false }) => {
     height: 44,
     //fontWeight: 200,
     display: backable ? 'block' : 'none'
-  }, extraStyle = {
+  }, shareStyle = {
      position: 'absolute',
      right: 0,
      top: 0,
      width: 44,
      height: 44,
-     display: Extra ? 'block' : 'none',
+     display: shareData ? 'block' : 'none',
      verticalAlign: 'middle'
   }, arrowStyle = {
     color:fgColor2,
@@ -56,10 +56,10 @@ const Header = ({ style: _style, Extra, children, backable = false }) => {
       <div style={childrenStyle}>
         {children}
       </div>
-      <div style={extraStyle}>
-      {Extra}
-      </div>
-    </div>);
+      <ShareButton
+        style={shareStyle}
+        {...shareData} />
+    </div>)
 }
 /*
   */

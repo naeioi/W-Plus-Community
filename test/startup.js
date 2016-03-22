@@ -21,18 +21,25 @@ const mockEvent = {
   description: 'Maecenas bibendum non dui vel luctus. Duis suscipit consequat quam, vel viverravelit congue a. Mauris at nibh egetsapien cursus tempus. Morbi dictum non',
 };
 
-require.ensure(['./App.jsx', 'react-dom', 'react', '../src/EventPage.jsx'], (require)=>{
-  let EventPage = require('../src/EventPage.jsx').default;
-  let History = require('../src/History.jsx').default;
-  let Discovery = require('../src/Discovery.jsx').default;
+require.ensure(['./App.jsx', 'react-dom', 'react', '../src/page/EventPage.jsx'], (require)=>{
+  let EventPage = require('../src/page/EventPage.jsx').default;
+  let History = require('../src/page/History.jsx').default;
+  let Discovery = require('../src/page/Discovery.jsx').default;
   let ReactDOM = require('react-dom');
   let React = require('react');
   let DatePicker = require('../src/component/DatePicker.jsx').default;
   let mountPoint = document.getElementById('App');
   let TimePicker = require('../src/component/TimePicker.jsx').default;
+  let ReserveRoom = require('../src/page/ReserveRoom.jsx').default;
+  let Test_Header2 = require('../src/test/Header2.jsx').default;
+  let ApplyEvent = require('../src/page/ApplyEvent.jsx').default;
+
   document.getElementById('startup-loading').innerHTML = '';
   //ReactDOM.render(<EventPage event={mockEvent}/>, document.getElementById('App'));
   //ReactDOM.render(<Discovery />, document.getElementById('App'));
-  //ReactDOM.render(<DatePicker defaultDate={"2015/01/01"}/>, mountPoint);
-  ReactDOM.render(<TimePicker hourState={(h)=>h.hour() == '0' ? 'occupied' : 'empty'}/>, mountPoint);
+  //ReactDOM.render(<DatePicker />, mountPoint);
+  //ReactDOM.render(<TimePicker hourState={(h)=>h.hour() == '0' ? 'occupied' : 'empty'}/>, mountPoint);
+  //ReactDOM.render(<ReserveRoom />, mountPoint);
+  //ReactDOM.render(<Test_Header2 />, mountPoint);
+  ReactDOM.render(<ApplyEvent /> , mountPoint);
 });

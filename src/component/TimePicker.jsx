@@ -6,6 +6,8 @@ import { setAlpha } from '../utility/style'
 import Circle from './Circle.jsx'
 import { mergeCSS } from '../utility/style'
 
+/* TimePicker will automatically align to HH:00:00, discarding min & sec */
+
 class TimePicker extends React.Component {
   constructor({ defaultBeginHour: startHour, defaultEndHour: endHour }) {
     super();
@@ -92,7 +94,7 @@ class TimePicker extends React.Component {
     } = this.state;
 
     if(ok) {
-      this.props.select(_s, _e?_e:_s);
+      this.props.select(_s.minute(0).second(0), _e?_e.minute(0).second(0):_s.minute(0).second(0));
     }
   }
 
@@ -107,13 +109,14 @@ class TimePicker extends React.Component {
     } = this.state;
 
     const s = {
-      main: {
+      main: mergeCSS(this.props.style, {
+        position: 'absolute',
         width: '100%',
-        border: '1px solid rgba(0,0,0,0.1)',
+        border: '1px solid rgba(0,0,0,0.4)',
         maxWidth: 250,
-        margin: '0 auto',
+        right: '3%',
         backgroundColor: 'white'
-      },
+      }),
       header: {
         position: 'relative',
         textAlign: 'center',
@@ -210,8 +213,7 @@ class TimePicker extends React.Component {
           </Button>
         </div>
         <div
-          style={s.notifier}
-          >
+          style={s.notifier}>
           {this.state.notification}
         </div>
         {((startHour, endHour)=>{

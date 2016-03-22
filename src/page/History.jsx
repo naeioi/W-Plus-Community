@@ -1,22 +1,23 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import Header from '../src/component/Header.jsx'
-import { fgColor2 } from '../src/style/baseCSS'
-import ShareButton from '../src/component/ShareButton.jsx'
-import NavBar from '../src/component/NavBar.jsx'
-import Circle from '../src/component/Circle.jsx'
-import EventEntry from '../src/component/EventEntry.jsx'
-import '../src/utility/stickyfill'
+import Header from '../component/Header.jsx'
+import { fgColor2 } from '../style/baseCSS'
+import ShareButton from '../component/ShareButton.jsx'
+import NavBar from '../component/NavBar.jsx'
+import Circle from '../component/Circle.jsx'
+import EventEntry from '../component/EventEntry.jsx'
+import '../utility/stickyfill'
 import injectTapEventPlugin from 'react-tap-event-plugin'
 try{
 injectTapEventPlugin();
 } catch(e) {}
 
-import { mockEventThumbnail, mockEventPic, mockEvent } from './mockData'
+import { mockEventThumbnail, mockEventPic, mockEvent } from '../mockData'
 
 const History = () => (
     <div>
       <Header
+        Extra={<ShareButton />}
         style={{zIndex: 2}}
         backable={true}
         shareData={{name:'zhu'}}>
