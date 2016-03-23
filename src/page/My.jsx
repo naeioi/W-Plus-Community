@@ -50,14 +50,16 @@ class My extends React.Component {
 		let s = {
 			main: {
 				paddingTop: 44,
-				height: '100%',
+				minHeight: '200vh',
 				backgroundColor: 'white',
-				overflow: 'hidden',
+				//overflow: 'hidden',
 				boxSizing: 'border-box'
 			},
 			profileWrap: {
 				height: 130,
 				width: '100%',
+				zIndex: -1
+				//float: 'left'
 			},
 			photo: {
 				display: 'block',
@@ -79,19 +81,22 @@ class My extends React.Component {
 				fontSize: '0.8em'
 			},
 			divLine: {
+				display: 'none',
 				width: '80%',
 				height: 1,
 				borderTop: '1px solid rgb(240,240,240)'
 			},
 			blocksWrap: {
-				width: '99%',
+				//width: '99%',
 				margin: '0 auto',
 				border: `1px solid ${fgColor1}`,
 				borderCollapse: 'collapse',
 				backgroundColor: 'white',
-				boxShadow: '0 0 5px 1px rgba(0,0,0,0.2)',
+				boxShadow: '0 2px 3px 1px rgba(0,0,0,0.2)',
 				color: fgColor1,
-				fontWeight: 'bold'
+				fontWeight: 'bold',
+				position: 'sticky',
+      	top: 45,
 			},
 			tr: {
 				border: `1px solid ${fgColor1}`
@@ -99,7 +104,8 @@ class My extends React.Component {
 			td: {
 				height: 60,
 				border: `1px solid ${fgColor1}`,
-				textAlign: 'center'
+				textAlign: 'center',
+				width: '32vw'
 			},
 			icon: {
 				fontSize: '2em'
@@ -108,9 +114,10 @@ class My extends React.Component {
 
 		return (
 			<div style={s.main}>
-				<Header>我的</Header>
+				<Header style={{zIndex: 2}}>我的</Header>
 				<NavBar />
-				<div style={s.profileWrap}>
+				<div 
+					style={s.profileWrap}>
 					<div style={s.photo}>
 					</div>
 					<div style={s.name}>
@@ -118,7 +125,9 @@ class My extends React.Component {
 					</div>
 				</div>
 				<div style={s.divLine}></div>
-				<table style={s.blocksWrap}>
+				<table 
+					ref={(e)=>Stickyfill.add(e)}
+					style={s.blocksWrap}>
 					<tbody>
 						{chunkit(blocks, 3).map((row, ind)=>(
 							<tr
