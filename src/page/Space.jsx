@@ -46,7 +46,9 @@ class SpaceEntry extends React.Component {
 		let s = {
 			main: {
 				width: '100%',
-				position: 'relative'
+				position: 'relative',
+				marginBottom: 5,
+				boxShadow: '0 1px 1px rgba(0,0,0,0.3)'
 			},
 			poster: {
 				height: 122,
@@ -150,6 +152,7 @@ class Space extends React.Component {
 			},
 			categoriesWrap: {
 				paddingTop: 44,
+				paddingBottom: 80
 			}
 		};
 

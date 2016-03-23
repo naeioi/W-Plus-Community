@@ -35,6 +35,7 @@ require.ensure(['./App.jsx', 'react-dom', 'react', '../src/page/EventPage.jsx'],
   let ApplyEvent = require('../src/page/ApplyEvent.jsx').default;
   let Space = require('../src/page/Space.jsx').default;
   let mockSpaces = require('../src/mockData.js').mockSpaces;
+  let My = require('../src/page/My.jsx').default;
 
   document.getElementById('startup-loading').innerHTML = '';
   //ReactDOM.render(<EventPage event={mockEvent}/>, document.getElementById('App'));
@@ -44,5 +45,6 @@ require.ensure(['./App.jsx', 'react-dom', 'react', '../src/page/EventPage.jsx'],
   //ReactDOM.render(<ReserveRoom />, mountPoint);
   //ReactDOM.render(<Test_Header2 />, mountPoint);
   //ReactDOM.render(<ApplyEvent /> , mountPoint);
-  ReactDOM.render(<Space spaces={mockSpaces}/>, mountPoint);
+  //ReactDOM.render(<Space spaces={mockSpaces}/>, mountPoint);
+  ReactDOM.render(<My />, mountPoint);
 });
