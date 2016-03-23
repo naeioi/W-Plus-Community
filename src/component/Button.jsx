@@ -12,7 +12,7 @@ class Button extends React.Component {
   }
   render() {
     let style = mergeCSS(this._style, {
-      display: 'block',
+      display: this._style && this._style.display ? this._style.display : 'block',
       textAlign: 'center',
       WebkitUserSelect: 'none'
     });

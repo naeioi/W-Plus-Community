@@ -33,6 +33,8 @@ require.ensure(['./App.jsx', 'react-dom', 'react', '../src/page/EventPage.jsx'],
   let ReserveRoom = require('../src/page/ReserveRoom.jsx').default;
   let Test_Header2 = require('../src/test/Header2.jsx').default;
   let ApplyEvent = require('../src/page/ApplyEvent.jsx').default;
+  let Space = require('../src/page/Space.jsx').default;
+  let mockSpaces = require('../src/mockData.js').mockSpaces;
 
   document.getElementById('startup-loading').innerHTML = '';
   //ReactDOM.render(<EventPage event={mockEvent}/>, document.getElementById('App'));
@@ -41,5 +43,6 @@ require.ensure(['./App.jsx', 'react-dom', 'react', '../src/page/EventPage.jsx'],
   //ReactDOM.render(<TimePicker hourState={(h)=>h.hour() == '0' ? 'occupied' : 'empty'}/>, mountPoint);
   //ReactDOM.render(<ReserveRoom />, mountPoint);
   //ReactDOM.render(<Test_Header2 />, mountPoint);
-  ReactDOM.render(<ApplyEvent /> , mountPoint);
+  //ReactDOM.render(<ApplyEvent /> , mountPoint);
+  ReactDOM.render(<Space spaces={mockSpaces}/>, mountPoint);
 });

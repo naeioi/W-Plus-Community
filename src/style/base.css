@@ -33,7 +33,13 @@ body {
 
 a {
   text-decoration: none;
+  -webkit-user-select: none;
 }
+
+.noselect {
+  -webkit-user-select: none;
+}
+
 
 .circle:before {
     content: ' \25CF';

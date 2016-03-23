@@ -71,8 +71,6 @@ const Event = ({ event: e }) => {
       width: '60%',
       textAlign: 'center',
       color: 'white',
-      fontWeight: 'bold',
-      textShadow: '0 0 3px rgba(0,0,0,0.5)',
       margin: '0 auto'
     }
   };

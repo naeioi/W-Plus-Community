@@ -1,5 +1,62 @@
 const mockEventThumbnail = require('../static/mockEventThumbnail.png');
 const mockEventPic = require('../static/mockEventPic.jpeg')
+
+const mockSpaces = [
+  {
+    name: '钢琴房',
+    backgroundImage: `url(${require('../static/mockSpacePic.jpg')})`,
+    spaces: [{
+      name: '西南一钢琴房'
+    },{
+      name: '西南一钢琴房'
+    },{
+      name: '西南一钢琴房'
+    },{
+      name: '西南一钢琴房'
+    },{
+      name: '西南一钢琴房'
+    },{
+      name: '西南一钢琴房'
+    }],
+
+  },
+  {
+    name: '钢琴房',
+    backgroundImage: `url(${require('../static/mockSpacePic.jpg')})`,
+    spaces: [{
+      name: '西南一钢琴房'
+    },{
+      name: '西南一钢琴房'
+    },{
+      name: '西南一钢琴房'
+    },{
+      name: '西南一钢琴房'
+    },{
+      name: '西南一钢琴房'
+    },{
+      name: '西南一钢琴房'
+    }],
+    
+  },{
+    name: '钢琴房',
+    backgroundImage: `url(${require('../static/mockSpacePic.jpg')})`,
+    spaces: [{
+      name: '西南一钢琴房'
+    },{
+      name: '西南一钢琴房'
+    },{
+      name: '西南一钢琴房'
+    },{
+      name: '西南一钢琴房'
+    },{
+      name: '西南一钢琴房'
+    },{
+      name: '西南一钢琴房'
+    }],
+    
+  }
+];
+
 const mockEvent = {
   title: '尤克里里分享会',
   '_id': 1423423,
@@ -40,4 +97,4 @@ const mockPosters = [
   }
 ];
 
-export { mockPosters, mockEvent, mockEventPic, mockEventThumbnail, mockComment }
+export { mockPosters, mockEvent, mockEventPic, mockEventThumbnail, mockComment, mockSpaces }
