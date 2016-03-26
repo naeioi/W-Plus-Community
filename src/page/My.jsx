@@ -5,10 +5,23 @@ import chunkit from '../utility/chunkit'
 import padArray from '../utility/padArray'
 import { fgColor1, bgColor1 } from '../style/baseCSS'
 import ButtonMixin from '../component/ButtonMixin.jsx'
+import Reserved from './My_sub/Reserved.jsx'
+import Tickets from './My_sub/Tickets.jsx'
+import Favo from './My_sub/Favo.jsx'
+import Activities from './My_sub/Activities.jsx'
+import Notifi from './My_sub/Notifi.jsx'
+import About from './My_sub/About.jsx'
 
 class My extends React.Component {
 	constructor() {
 		super();
+		this.state = {
+			sub_page: null
+		}
+	}
+
+	componentDidMount() {
+		Stickyfill.add(this.refs['stickyWrap'])
 	}
 
 	render() {
@@ -16,32 +29,32 @@ class My extends React.Component {
 			{
 				icon: 'icon-clock',
 				name: '预约',
-				href: '#'
+				sub_page: 'reserved'
 			},
 			{
 				icon: 'icon-ticket',
 				name: '票券',
-				href: '#'
+				sub_page: 'ticket'
 			},
 			{
 				icon: 'icon-heart-empty',
 				name: '收藏',
-				href: '#'
+				sub_page: 'favo'
 			},
 			{
 				icon: '',
 				name: '通知',
-				href: '#'
+				sub_page: 'notifi'
 			},
 			{
 				icon: '',
 				name: '活动',
-				href: '#'
+				sub_page: 'activity'
 			},
 			{
 				icon: '',
 				name: '关于',
-				href: '#'
+				sub_page: 'about'
 			},
 		];
 
@@ -50,7 +63,6 @@ class My extends React.Component {
 		let s = {
 			main: {
 				paddingTop: 44,
-				minHeight: '200vh',
 				backgroundColor: 'white',
 				//overflow: 'hidden',
 				boxSizing: 'border-box'
@@ -92,11 +104,9 @@ class My extends React.Component {
 				border: `1px solid ${fgColor1}`,
 				borderCollapse: 'collapse',
 				backgroundColor: 'white',
-				boxShadow: '0 2px 3px 1px rgba(0,0,0,0.2)',
+				boxShadow: '0 1px 1px 1px rgba(0,0,0,0.2)',
 				color: fgColor1,
 				fontWeight: 'bold',
-				position: 'sticky',
-      	top: 45,
 			},
 			tr: {
 				border: `1px solid ${fgColor1}`
@@ -109,11 +119,28 @@ class My extends React.Component {
 			},
 			icon: {
 				fontSize: '2em'
+			},
+			content: {
+				marginTop: 10
+			},
+			stickyWrap: {
+				position: 'sticky',
+      	top: 45,
+			},
+			bg: {
+				position: 'fixed',
+				top: 0,
+				left: 0,
+				height: '100vh',
+				width: '100vw',
+				zIndex: -5,
+				backgroundColor: 'white'
 			}
 		}
 
 		return (
 			<div style={s.main}>
+				<div style={s.bg}/>
 				<Header style={{zIndex: 2}}>我的</Header>
 				<NavBar />
 				<div 
@@ -125,26 +152,54 @@ class My extends React.Component {
 					</div>
 				</div>
 				<div style={s.divLine}></div>
-				<table 
-					ref={(e)=>Stickyfill.add(e)}
-					style={s.blocksWrap}>
-					<tbody>
-						{chunkit(blocks, 3).map((row, ind)=>(
-							<tr
-								key={ind}
-								style={s.tr} >
-								{padArray(row, 3).map((block, ind)=>(
-									<ButtonTd
-										key={ind}
-										style={s.td}>
-										<div className={block.icon} style={s.icon}></div>
-										{block.name}
-									</ButtonTd>
-									))}
-							</tr>
-							))}
-					</tbody>
-				</table>
+				<div 
+					style={s.stickyWrap}
+					ref='stickyWrap'>
+					<table 
+						style={s.blocksWrap}>
+						<tbody>
+							{chunkit(blocks, 3).map((row, ind)=>(
+								<tr
+									key={ind}
+									style={s.tr} >
+									{padArray(row, 3).map((block, ind)=>(
+										<ButtonTd
+											onTouchTap={()=>this.setState({
+												sub_page: block.sub_page
+											})}
+											key={ind}
+											style={s.td}>
+											<div className={block.icon} style={s.icon}></div>
+											{block.name}
+										</ButtonTd>
+										))}
+								</tr>
+								))}
+						</tbody>
+					</table>
+					<div style={s.content}>
+						{
+							((sub_page)=>{
+								switch(sub_page) {
+									case 'reserved':
+										return <Reserved />
+									case 'ticket':
+										return <Tickets />
+									case 'favo':
+										return <Favo />
+									case 'notifi':
+										return <Notifi />
+									case 'activity':
+										return <Activities />
+									case 'about':
+										return <About />
+									default:
+										return null;
+								}
+							})(this.state.sub_page)
+						}
+					</div>
+				</div>
 			</div>
 			);
 	}

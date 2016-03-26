@@ -1,5 +1,26 @@
+import moment from 'moment'
+
 const mockEventThumbnail = require('../static/mockEventThumbnail.png');
 const mockEventPic = require('../static/mockEventPic.jpeg')
+
+const mockNotifi = [
+  {
+    content: '张鹏 加入了你发起的活动',
+    timeStamp: moment()
+  },
+  {
+    content: '张鹏 加入了你发起的活动',
+    timeStamp: moment()
+  },
+  {
+    content: '张鹏 加入了你发起的活动',
+    timeStamp: moment()
+  },
+  {
+    content: '张鹏 加入了你发起的活动',
+    timeStamp: moment()
+  }
+]
 
 const mockSpaces = [
   {
@@ -97,4 +118,4 @@ const mockPosters = [
   }
 ];
 
-export { mockPosters, mockEvent, mockEventPic, mockEventThumbnail, mockComment, mockSpaces }
+export { mockPosters, mockEvent, mockEventPic, mockEventThumbnail, mockComment, mockSpaces, mockNotifi }
