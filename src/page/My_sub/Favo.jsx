@@ -1,8 +1,19 @@
 import React from 'react'
+import { mockEvent } from '../../mockData'
+import EventEntry from '../../component/EventEntry.jsx'
+const events = [mockEvent, mockEvent, mockEvent, mockEvent, mockEvent, mockEvent, mockEvent];
 
 const Favo = () => {
 	return (
-		<div></div>
+		<div>
+			{
+				events.map((e, ind)=>(
+					<EventEntry 
+						key={ind}
+						event={e} />
+					))
+			}
+		</div>
 	)
 }
 

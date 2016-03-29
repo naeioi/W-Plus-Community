@@ -99,7 +99,8 @@ class My extends React.Component {
 				borderTop: '1px solid rgb(240,240,240)'
 			},
 			blocksWrap: {
-				//width: '99%',
+				position: 'sticky',
+      	top: 45,
 				margin: '0 auto',
 				border: `1px solid ${fgColor1}`,
 				borderCollapse: 'collapse',
@@ -107,6 +108,7 @@ class My extends React.Component {
 				boxShadow: '0 1px 1px 1px rgba(0,0,0,0.2)',
 				color: fgColor1,
 				fontWeight: 'bold',
+				zIndex: 1
 			},
 			tr: {
 				border: `1px solid ${fgColor1}`
@@ -121,11 +123,10 @@ class My extends React.Component {
 				fontSize: '2em'
 			},
 			content: {
-				marginTop: 10
+				marginTop: 10,
+				paddingBottom: 70
 			},
 			stickyWrap: {
-				position: 'sticky',
-      	top: 45,
 			},
 			bg: {
 				position: 'fixed',
@@ -152,53 +153,50 @@ class My extends React.Component {
 					</div>
 				</div>
 				<div style={s.divLine}></div>
-				<div 
-					style={s.stickyWrap}
-					ref='stickyWrap'>
-					<table 
-						style={s.blocksWrap}>
-						<tbody>
-							{chunkit(blocks, 3).map((row, ind)=>(
-								<tr
-									key={ind}
-									style={s.tr} >
-									{padArray(row, 3).map((block, ind)=>(
-										<ButtonTd
-											onTouchTap={()=>this.setState({
-												sub_page: block.sub_page
-											})}
-											key={ind}
-											style={s.td}>
-											<div className={block.icon} style={s.icon}></div>
-											{block.name}
-										</ButtonTd>
-										))}
-								</tr>
-								))}
-						</tbody>
-					</table>
-					<div style={s.content}>
-						{
-							((sub_page)=>{
-								switch(sub_page) {
-									case 'reserved':
-										return <Reserved />
-									case 'ticket':
-										return <Tickets />
-									case 'favo':
-										return <Favo />
-									case 'notifi':
-										return <Notifi />
-									case 'activity':
-										return <Activities />
-									case 'about':
-										return <About />
-									default:
-										return null;
-								}
-							})(this.state.sub_page)
-						}
-					</div>
+				<table 
+					ref='stickyWrap'
+					style={s.blocksWrap}>
+					<tbody>
+						{chunkit(blocks, 3).map((row, ind)=>(
+							<tr
+								key={ind}
+								style={s.tr} >
+								{padArray(row, 3).map((block, ind)=>(
+									<ButtonTd
+										onTouchTap={()=>this.setState({
+											sub_page: block.sub_page == this.state.sub_page ? null : block.sub_page
+										})}
+										key={ind}
+										style={s.td}>
+										<div className={block.icon} style={s.icon}></div>
+										{block.name}
+									</ButtonTd>
+									))}
+							</tr>
+							))}
+					</tbody>
+				</table>
+				<div style={s.content}>
+					{
+						((sub_page)=>{
+							switch(sub_page) {
+								case 'reserved':
+									return <Reserved />
+								case 'ticket':
+									return <Tickets />
+								case 'favo':
+									return <Favo />
+								case 'notifi':
+									return <Notifi />
+								case 'activity':
+									return <Activities />
+								case 'about':
+									return <About />
+								default:
+									return null;
+							}
+						})(this.state.sub_page)
+					}
 				</div>
 			</div>
 			);
