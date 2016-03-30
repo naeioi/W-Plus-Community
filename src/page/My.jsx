@@ -124,7 +124,8 @@ class My extends React.Component {
 			},
 			content: {
 				marginTop: 10,
-				paddingBottom: 70
+				paddingBottom: 70,
+				zIndex: -1
 			},
 			stickyWrap: {
 			},

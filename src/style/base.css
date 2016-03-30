@@ -26,6 +26,16 @@ body {
   -webkit-touch-callout: none;
 }
 
+.vc {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.vcwrap {
+  position: relative;
+}
+
 ::selection {
   /* configure selected text color */
   background: #fff2a8;

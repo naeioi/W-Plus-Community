@@ -78,6 +78,14 @@ const mockSpaces = [
   }
 ];
 
+const mockTickets = [
+  {
+    start: moment().subtract(1, 'hour'),
+    end: moment(),
+    title: '西南十钢琴房'
+  }
+]
+
 const mockEvent = {
   title: '尤克里里分享会',
   '_id': 1423423,
@@ -94,6 +102,8 @@ const mockEvent = {
     end: '16:30'
   },
   description: 'Maecenas bibendum non dui vel luctus. Duis suscipit consequat quam, vel viverravelit congue a. Mauris at nibh egetsapien cursus tempus. Morbi dictum non',
+  status: '审核中',
+  progressPercent: '70%'
 };
 
 const mockComment = {
@@ -118,4 +128,4 @@ const mockPosters = [
   }
 ];
 
-export { mockPosters, mockEvent, mockEventPic, mockEventThumbnail, mockComment, mockSpaces, mockNotifi }
+export { mockPosters, mockEvent, mockEventPic, mockEventThumbnail, mockComment, mockSpaces, mockNotifi, mockTickets }
