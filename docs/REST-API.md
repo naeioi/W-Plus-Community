@@ -7,7 +7,7 @@
 
 ### Retrieve
 
-`GET /get/userInfo`
+`GET /api/my`
 
 Get basic info of a user. Return info of current user if `id` is not specific.
 ```
@@ -21,12 +21,11 @@ Get basic info of a user. Return info of current user if `id` is not specific.
   grade: {String}
 }
 ```
-`GET /get/event`
+`GET /api/event`
 
-`GET /get/eventsRoll`
+`GET /api/eventsRoll`
 
-`GET /get/comment`
 
-`GET `
+`GET /api/login`
 
 ### Update

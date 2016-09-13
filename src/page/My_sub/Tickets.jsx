@@ -18,11 +18,11 @@ const Ticket = ({ticket}) => {
 			width: 5
 		},
 		content: {
-			fontFamily:'Tahoma',
 			height: '100%',
 			textAlign: 'center'
 		},
 		left: {
+			fontFamily:'Tahoma',
 			position: 'relative',
 			float: 'left',
 			width: 140,

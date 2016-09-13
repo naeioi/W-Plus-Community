@@ -1,19 +1,18 @@
 ***Case not sensitive***
 
-**UserInfo** collection
+**User** collection
 ```javascript
 {
-  id: "1450000",
-  avatarFile: "1450000.jpg",
-  name: "李明",
-  grade: "2014",
-  department: "数学系-数理强化班",
-  occupation: null,
+  sid: { type: String } ,/* "1450000" */
+  avatar: { type: String }, /* "1450000.jpg" */
+  name: { type: String }, /* "李明" */
+  grade: { type: String },"2014",
+  department: { type: String }, /* "数学系-数理强化班" */
   dorm: "西南一",
 }
 ```
 
-**UserNotification** collection
+**Message** collection
 ```javascript
 {
   id: "1450000",
@@ -32,11 +31,8 @@
 **Event** collection
 ```javascript
 {
-  id: 1,
-  state: {
-    reviewed: false, /* 是否已审核 */
-    accepted: true, /* 审核结果 */  
-  },
+  reviewed: false, /* 是否已审核 */
+  accepted: true, /* 审核结果 */  
   title: "尤克里里分享会",
   description: "为了使得今天晚上我们的环境更轻松一点, 我回忆起我在1945-46年的大学年代, 经常我们喜欢玩Hawaii Guitar, 经常弹奏Hello Hawaii这个歌曲.",
   spaceID: -1, /* -1 for custom space other than officially offered */
