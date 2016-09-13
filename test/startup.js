@@ -44,7 +44,7 @@ require.ensure(['./App.jsx', 'react-dom', 'react', '../src/page/EventPage.jsx'],
   //ReactDOM.render(<TimePicker hourState={(h)=>h.hour() == '0' ? 'occupied' : 'empty'}/>, mountPoint);
   //ReactDOM.render(<ReserveRoom />, mountPoint);
   //ReactDOM.render(<Test_Header2 />, mountPoint);
-  //ReactDOM.render(<ApplyEvent /> , mountPoint);
+  ReactDOM.render(<ApplyEvent /> , mountPoint);
   //ReactDOM.render(<Space spaces={mockSpaces}/>, mountPoint);
-  ReactDOM.render(<My />, mountPoint);
+  //ReactDOM.render(<My />, mountPoint);
 });

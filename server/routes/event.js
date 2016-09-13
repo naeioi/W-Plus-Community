@@ -28,14 +28,6 @@ var Reply = require('../proxy/Reply');
 var _ = require('lodash');
 
 var event = function(req, res, next) {
-  if(req.session.user == null) {
-    res.send({
-      sucess: false,
-      msg: 'not login!'
-    });
-    return;
-  }
-
   var ep = new eventproxy();
 
   ep.all('event', function(event) {

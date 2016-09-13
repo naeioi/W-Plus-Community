@@ -12,11 +12,28 @@ var User = require('../model').User;
 //   res.render('index', { title: 'Express' });
 // });
 
+var checkLogin = function(req, res, next) {
+  if(!req.session.user) {
+    res.status(400);
+    res.send({
+      sucess: false,
+      msg: 'User not login!'
+    })
+  }
+}
+
+/* Retrive Part */
 router.get('/api/login', require('./login'));
 router.get('/api/eventRoll', require('./eventRoll'));
 router.get('/api/event', require('./event'));
+router.get('/api/my', checkLogin);
 router.get('/api/my', require('./my'));
-// router.get('/api/')
+
+/* Update Part */
+router.post('/api/reserve', require('./reserve'));
+router.post('/api/apply', require('./apply'));
+router.post('/api/reply', require('./reply'));
+router.post('/api/upload/avatar', require('./avatar'));
 
 router.get('/test', function(req, res, next) {
   res.send("hello");

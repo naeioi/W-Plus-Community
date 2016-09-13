@@ -51,7 +51,7 @@ exports.getByMember(config, cb) {
 }
 
 exports.getById(id, cb) {
-  Event.find({ id: id }), function(event) {
+  Event.find({ _id: id }), function(event) {
     cb(mapSpace(event));
   });
 }
