@@ -1,7 +1,10 @@
 var Event = require('../proxy/Event');
 var Message = require('../proxy/Message');
+var checklogin = require('../middleware/checklogin');
 
 var my = function(req, res, next) {
+  checklogin(req, res);
+
   var ep = new eventproxy();
 
   ep.all('reserves', 'tickets', 'favos', 'messages',

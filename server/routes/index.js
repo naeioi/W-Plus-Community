@@ -26,14 +26,16 @@ var checkLogin = function(req, res, next) {
 router.get('/api/login', require('./login'));
 router.get('/api/eventRoll', require('./eventRoll'));
 router.get('/api/event', require('./event'));
-router.get('/api/my', checkLogin);
 router.get('/api/my', require('./my'));
 
 /* Update Part */
+/* Be cautious with the Content-Type
+   Diffrent Content-Type is dealt with by different middleware
+ */
 router.post('/api/launch', require('./launch'));
 router.post('/api/reserve', require('./reserve'));
 router.post('/api/join', require('./join'));
-router.post('/api/reply', require('./reply'));
+router.post('/api/comment', require('./comment'));
 router.post('/api/upload/avatar', require('./avatar'));
 
 router.get('/test', function(req, res, next) {
