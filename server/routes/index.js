@@ -30,8 +30,9 @@ router.get('/api/my', checkLogin);
 router.get('/api/my', require('./my'));
 
 /* Update Part */
+router.post('/api/launch', require('./launch'));
 router.post('/api/reserve', require('./reserve'));
-router.post('/api/apply', require('./apply'));
+router.post('/api/join', require('./join'));
 router.post('/api/reply', require('./reply'));
 router.post('/api/upload/avatar', require('./avatar'));
 

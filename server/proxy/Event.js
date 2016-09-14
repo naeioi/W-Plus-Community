@@ -27,14 +27,14 @@ function mapSpace(event) {
   Space.getById(event.space_id, ep.done('space'));
 }
 
-exports.getRecent(config, cb) {
+exports.getRecent = function(config, cb) {
   Event.find({}, null, { skip: config.skip, limit: config.limit}, function(events) {
     events = events.map(mapSpace);
     cb(events);
   });
 }
 
-exports.getByAuthor(config, cb) {
+exports.getByAuthor = function(config, cb) {
   Event.find({ author_id: config.user_id },
     { skip: config.skip, limit: config.limit}, function(events) {
       events = events.map(mapSpace);
@@ -42,7 +42,7 @@ exports.getByAuthor(config, cb) {
     });
 }
 
-exports.getByMember(config, cb) {
+exports.getByMember = function(config, cb) {
   Event.find({ member_id: config.user_id },
     { skip: config.skip, limit: config.limit}, function(events) {
       events = events.map(mapSpace);
@@ -50,8 +50,17 @@ exports.getByMember(config, cb) {
     });
 }
 
-exports.getById(id, cb) {
+exports.getById = function(id, cb) {
   Event.find({ _id: id }), function(event) {
     cb(mapSpace(event));
   });
+}
+
+/* body content see REST_API_md. *launch* part */
+exports.createNew = function(body, pics, cb) {
+  var event = new Event(body);
+  event.pics = pics;
+  event.save(function(err) {
+    cb(err, event);
+  })
 }
